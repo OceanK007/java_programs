@@ -32,7 +32,7 @@ public class StairCase5
 		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Enter input int value: ");
-		Integer height = Integer.valueOf(scanner.nextLine());
+		Integer height = scanner.nextInt();
 		
 		for(int i=1 ; i<=height ; i++)
 		{
