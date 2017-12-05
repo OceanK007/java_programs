@@ -16,16 +16,16 @@ Output Format
 
 Draw a staircase of height N in the format given below.
 For example:
-     # 
-    # # 
-   # # # 
-  # # # # 
- # # # # # 
 # # # # # # 
+ # # # # # 
+  # # # # 
+   # # # 
+    # # 
+     # 
 Staircase of height 6, note that last line has 0 spaces before it.
 **/
 
-public class StairCase5 
+public class StairCase7 
 {
 	public static void main(String[] args) throws NumberFormatException, IOException 
 	{
@@ -38,7 +38,7 @@ public class StairCase5
 		{
 			for(int j=1; j<=height ; j++)
 			{
-				int limit = height - i;
+				int limit = i-1;
 				if(j<=limit)
 				{
 					System.out.print(" ");
