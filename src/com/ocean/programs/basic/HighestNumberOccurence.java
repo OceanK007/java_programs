@@ -3,16 +3,16 @@ package com.ocean.programs.basic;
 import java.util.Scanner;
 
 /**
-Sample Input 0
+Sample Input 
 
 4
 3 2 1 3
 
-Sample Output 0
+Sample Output 
 
 2
 
-Explanation 0
+Explanation 
 
 We have one candle of height 1, one candle of height 2, and two candles of height 3. 
 Colleen only blows out the tallest candles, meaning the candles where height=3. Because there are 2 such candles, we print 2 on a new line. 
