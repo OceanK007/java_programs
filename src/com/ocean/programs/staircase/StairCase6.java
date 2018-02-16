@@ -40,9 +40,7 @@ public class StairCase6
 			{
 				int limit = i-1;
 				if(j<=limit)
-				{
 					System.out.print(" ");
-				}
 				else
 					System.out.print("# ");
 			}

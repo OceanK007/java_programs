@@ -16,7 +16,34 @@ public class MaxFrequencyChar
 		String source = scanner.nextLine();
 		char[] charArray = source.toCharArray();
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		String result = null;
+		Integer frequency = 0;
+		for(int i=0;i<charArray.length;i++)
+		{
+			int count = 0;
+			for(int j=0;j<charArray.length;j++)
+			{
+				if(i!=j)
+				{
+					if(charArray[i] == charArray[j])
+					{
+						count += 1;
+					}
+				}
+			}
+			
+			if(count > frequency)
+			{
+				result = String.valueOf(charArray[i]);
+				frequency = count;
+			}
+		}
+		
+		System.out.println(result);
+		
+		
+		//####################################################################################################//
+		/*Map<String, Integer> map = new HashMap<String, Integer>();
 		for(int i=0;i<charArray.length;i++)
 		{
 			if(map.containsKey(String.valueOf(charArray[i])))
@@ -30,19 +57,19 @@ public class MaxFrequencyChar
 			}
 		}
 		
-		/*String result = null;
-		Integer frequency = 0;
+		//String result = null;
+		//Integer frequency = 0;
 		
-		for(Map.Entry<String, Integer> entrySet : map.entrySet())
-		{
-			if(entrySet.getValue() > frequency)
-			{
-				result = entrySet.getKey();
-				frequency = entrySet.getValue();
-			}
-		}
+		//for(Map.Entry<String, Integer> entrySet : map.entrySet())
+		//{
+			//if(entrySet.getValue() > frequency)
+			//{
+				//result = entrySet.getKey();
+				//frequency = entrySet.getValue();
+			//}
+		//}
 		
-		System.out.println(result);*/
+		System.out.println(result);
 		
 		String[] stringArray = {null};		// You have to define variable this way while dealing with lambda
 		Integer[] frequencyArray = {0};
@@ -55,6 +82,6 @@ public class MaxFrequencyChar
 			}
 		});
 		
-		System.out.println(stringArray[0]);
+		System.out.println(stringArray[0]);*/
 	}
 }

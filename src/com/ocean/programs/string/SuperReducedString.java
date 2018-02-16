@@ -45,37 +45,9 @@ public class SuperReducedString
         else
             System.out.println("Empty String");
     }
-	
+		
+	/** Best solution: use recursion **/
 	static String super_reduced_string(String s)
-	{
-        char[] charArray = s.toCharArray();
-        
-        String result = "";
-        
-        List<String> list = new LinkedList<String>();
-        for(int i=0;i<charArray.length;i++)
-        {
-        	list.add(String.valueOf(charArray[i]));
-        }
-        
-        ListIterator<String> listIterator = list.listIterator();
-        while(listIterator.hasNext())
-        {
-        	String first = listIterator.next();
-        	String second = listIterator.next();
-        	
-        	if(first.equals(second))
-        	{
-        		
-        	}
-        	
-        }
-        
-        return result;
-    }
-	
-	/** Best solution: Either use recursion or listIterator **/
-	/*static String super_reduced_string(String s)
 	{
         char[] charArray = s.toCharArray();
         
@@ -101,7 +73,7 @@ public class SuperReducedString
             }
         }
         return result;
-    }*/
+    }
 
 	/** it will fail on 
 	  	input: baab 

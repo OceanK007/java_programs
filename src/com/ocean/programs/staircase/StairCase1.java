@@ -34,13 +34,13 @@ public class StairCase1
 		
 		for(int i=1 ; i<=height ; i++)
 		{
-			for(int j=1; j<=height ; j++)
+			for(int j=1; j<=height; j++)
 			{
 				int limit = height-i;
-				if(j>limit)
-					System.out.print("#");
-				else
+				if(j<=limit)
 					System.out.print(" ");
+				else
+					System.out.print("#");
 			}
 			System.out.println("");
 		}

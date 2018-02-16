@@ -41,8 +41,6 @@ public class StairCase4
 				int limit = height - (i-1);
 				if(j<=limit)
 					System.out.print("#");
-				else
-					System.out.print(" ");
 			}
 			System.out.println("");
 		}

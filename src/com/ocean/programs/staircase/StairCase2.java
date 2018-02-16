@@ -39,9 +39,7 @@ public class StairCase2
 			for(int j=1; j<=height ; j++)
 			{
 				int limit = i;
-				if(j>limit)
-					System.out.print(" ");
-				else
+				if(j<=limit)
 					System.out.print("#");
 			}
 			System.out.println("");

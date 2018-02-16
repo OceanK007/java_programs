@@ -40,9 +40,7 @@ public class StairCase5
 			{
 				int limit = height - i;
 				if(j<=limit)
-				{
 					System.out.print(" ");
-				}
 				else
 					System.out.print("# ");
 			}
