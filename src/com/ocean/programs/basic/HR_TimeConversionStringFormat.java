@@ -25,7 +25,7 @@ Sample Output
 
 12:05:45
 **/
-public class TimeConversionStringFormat 
+public class HR_TimeConversionStringFormat 
 {
 	static String timeConversion(String s) 
  	{

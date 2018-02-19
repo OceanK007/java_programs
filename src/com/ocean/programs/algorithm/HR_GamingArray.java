@@ -42,7 +42,7 @@ Andy and Bob play the following two games:
 
 2. In the first move, Bob removes  and all the elements to its right, resulting in A = []. As there are no elements left in the array for Andy to make a move, Bob wins and we print BOB on a new line.
 **/
-public class GamingArray 
+public class HR_GamingArray 
 {
 	public static void main(String[] args) 
 	{

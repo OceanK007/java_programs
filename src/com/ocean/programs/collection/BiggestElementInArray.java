@@ -23,8 +23,8 @@ public class BiggestElementInArray
 			intArray[i] = scanner.nextInt();
 		}
 		
-		int biggestElement = Integer.MIN_VALUE;
-		for(int i=0;i<intArray.length;i++)
+		int biggestElement = intArray[0];
+		for(int i=1;i<intArray.length;i++)
 		{
 			if(intArray[i] > biggestElement)
 			{

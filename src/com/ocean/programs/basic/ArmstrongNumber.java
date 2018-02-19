@@ -3,7 +3,7 @@ package com.ocean.programs.basic;
 import java.util.Scanner;
 
 /** 
-	371 is an Armstrong number since 3**3 + 7**3 + 1**3 = 371
+	371 is an Armstrong number since 3*3*3 + 7*7*7 + 1*1*1 = 371
 **/
 public class ArmstrongNumber 
 {

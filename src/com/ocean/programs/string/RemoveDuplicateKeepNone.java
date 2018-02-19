@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 /**
  	Sample Input = ereraeb
- 	Output = erab
+ 	Output = ab
 **/
-public class RemoveDuplicate 
+public class RemoveDuplicateKeepNone 
 {
 	public static void main(String args[])
 	{
@@ -17,9 +17,21 @@ public class RemoveDuplicate
 		
 		for(int i=0;i<charArray.length;i++)
 		{
-			if(!sb.toString().contains(String.valueOf(charArray[i])))
+			Integer counter = 1;
+			for(int j=0;j<charArray.length;j++)
 			{
-				sb.append(charArray[i]);
+				if(i!=j)
+				{
+					if(charArray[i] == charArray[j])
+					{
+						counter = counter +1;
+					}
+				}
+			}
+			
+			if(counter == 1)
+			{
+				sb.append(String.valueOf(charArray[i]));
 			}
 		}
 		

@@ -44,7 +44,7 @@ The secondary diagonal is:
 Sum across the secondary diagonal: 4 + 5 + 10 = 19 
 Difference: |4 - 19| = 15
 **/
-public class MatrixDiagonalDifference 
+public class HR_MatrixDiagonalDifference 
 {
 	public static void main(String[] args) 
 	{

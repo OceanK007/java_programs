@@ -33,7 +33,7 @@ acdqgacdqj
 
 **/
 
-public class SuperReducedString 
+public class HR_SuperReducedString 
 {
 	public static void main(String[] args) 
     {
