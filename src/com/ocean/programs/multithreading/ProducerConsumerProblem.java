@@ -73,7 +73,7 @@ class ProducerConsumer
 		for(int i=0;i<10;i++)
 		{
 			if(items.size() == initialCapacity)
-				wait();
+				wait();	// Once wait will be ended, then it will continue execution of next statements 
 			
 			items.add(i);
 			
@@ -89,7 +89,7 @@ class ProducerConsumer
 		for(int i=0;i<10;i++)
 		{
 			if(items.size()==0)
-				wait();
+				wait();	// Once wait will be ended, then it will continue execution of next statements 
 			
 			Integer item = items.removeFirst();
 			

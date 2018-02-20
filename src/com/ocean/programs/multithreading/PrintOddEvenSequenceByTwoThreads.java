@@ -53,6 +53,7 @@ public class PrintOddEvenSequenceByTwoThreads
 		oddThread.join();
 		evenThread.join();
 		
+		// Note that since oddThread using wait() and notify() methods inside printOdd() method and invoking evenThread as well using notify().
 		System.out.println(printOddAndEven.numbers);
 	}
 }
@@ -77,7 +78,7 @@ class PrintOddAndEven
 				break;
 			
 			if(isOddTurn == true)
-				wait();
+				wait();	// Once wait will be ended, then it will continue execution of next statements 
 			
 			if(numbers.size() < size)
 				numbers.add(counter);
@@ -85,6 +86,7 @@ class PrintOddAndEven
 			counter++;
 			isOddTurn = true;
 			
+			// notifies the oddThread that now it can start execution
 			notify();
 		}
 	}
@@ -97,7 +99,7 @@ class PrintOddAndEven
 				break;
 			
 			if(isOddTurn == false)
-				wait();
+				wait();	// Once wait will be ended, then it will continue execution of next statements 
 			
 			if(numbers.size() < size)
 				numbers.add(counter);
@@ -105,6 +107,7 @@ class PrintOddAndEven
 			counter++;
 			isOddTurn = false;
 			
+			// notifies the evenThread that now it can start execution
 			notify();
 		}
 	}
