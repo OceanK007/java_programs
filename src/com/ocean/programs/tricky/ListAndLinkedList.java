@@ -11,7 +11,7 @@ public class ListAndLinkedList
 		LinkedList<String> linkedList = new LinkedList<String>();
 		linkedList.removeFirst();
 		
-		List<String> list = new ArrayList<String>();
+		List<String> list = new LinkedList<String>();
 		//list.removeFirst();	// removeFirst() doesn't exist	// why?
 		// Why are we unable to call subclass's method here?
 	}
