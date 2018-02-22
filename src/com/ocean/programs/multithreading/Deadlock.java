@@ -1,5 +1,9 @@
 package com.ocean.programs.multithreading;
 
+/**
+Deadlock occurs in a situation when thread X is waiting for an object lock of resource B that is acquired by thread Y. 
+And that thread Y is waiting for an object lock of resource A that is acquired by thread X.
+**/
 public class Deadlock 
 {
 	public static void main(String[] args) throws InterruptedException 
