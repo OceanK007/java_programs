@@ -2,16 +2,16 @@ package com.ocean.programs.design.pattern.creational;
 
 import java.io.Serializable;
 
-final public class Singleton implements Serializable, Cloneable	// Made final so can't be extended, so no inheritance
+final public class SingletonPattern implements Serializable, Cloneable	// Made final so can't be extended, so no inheritance
 {
 	private static final long serialVersionUID = 6016675667246341117L;
 	
 	// Made volatile so variable will be stored in main memory not in cpu memory.
 	// Without volatile modifier it's possible for another thread in Java to see half initialized state of _instance variable
 	// all the write will happen on volatile _instance before any read of _instance variable
-	static private volatile Singleton instance = null;		
+	static private volatile SingletonPattern instance = null;		
 
-	private Singleton() // Made private, so can't create instance of this class
+	private SingletonPattern() // Made private, so can't create instance of this class
 	{
 		if( instance != null ) 
 		{
@@ -33,15 +33,15 @@ final public class Singleton implements Serializable, Cloneable	// Made final so
 		return instance;
 	}
 	
-	public static Singleton getInstance() 
+	public static SingletonPattern getInstance() 
 	{
 		if (instance == null)	// 1: Without lock (not in synchronized block)
 		{
-			synchronized(Singleton.class) 
+			synchronized(SingletonPattern.class) 
 			{  
 				//double checked locking - because second check of Singleton instance with lock
 				if (instance == null)          // 2: With lock (in synchronized block)
-					instance = new Singleton();  
+					instance = new SingletonPattern();  
 			}
 		}
 		return instance;
