@@ -4,7 +4,15 @@ public class BuilderPattern
 {
 	public static void main(String[] args) 
 	{
-		Student s = new Student.Builder()		// This is how, you can call inner static class
+		//###### Ways to call non-static inner class ######//
+		//InnerClass ic = new User().new InnerClass();  // Or this way
+		//User.InnerClass ic = new User().new InnerClass();
+		
+		//###### Ways to call static inner class ######//
+		//InnerClass ic = new User.InnerClass(); // Or this way
+		//User.InnerClass ic = new User.InnerClass();
+
+		User s = new User.Builder()		// This is how, you can call inner static class
 					.name("Ocean")
 					.age(18)
 					.rollNo("100A")
@@ -14,20 +22,21 @@ public class BuilderPattern
 	}
 }
 
-class Student 
+class User 
 {
     private String name;
     private int age;
     private String rollNo;
 
-    private Student(Builder builder) 	// Made private so can't create object of Student class using constructor
+    private User(Builder builder) 	// Made private so can't create object of Student class using constructor
     {
         name = builder.name;
         age = builder.age;
         rollNo = builder.rollNo;
     }
-    
-    public static class Builder 
+        
+    // Static inner class can't access non-static fields and methods of outer class. But can access constructor of outer (which are non-static)
+    public static class Builder 	
     {
         private String name;
         private int age;
@@ -51,9 +60,9 @@ class Student
         	return this;
         }
 
-        public Student build() 
+        public User build() 
         {
-            return new Student(this);
+            return new User(this);
         }
     }
 
