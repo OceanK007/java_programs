@@ -13,5 +13,12 @@ public class HashMapOutput
 		
 		System.out.println(map.get(null));	// hello
 		System.out.println(map.size());		// 1
+
+		///////////////////////////////////////////////////////////////////////
+		
+		HashMap<String, String> map2 = new HashMap<>();
+		System.out.println(map2.put("One", "Value1"));	// null
+		System.out.println(map2.put("Two", "Value2"));	// null
+		System.out.println(map2.put("One", "Value3"));	// Value1 (It returns previous value of key if key already exists)
 	}
 }
