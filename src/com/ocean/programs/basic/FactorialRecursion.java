@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
 5! = 5*4*3*2*1 = 120
 **/
-public class Factorial 
+public class FactorialRecursion 
 {
 	public static void main(String[] args) 
 	{
@@ -17,12 +17,9 @@ public class Factorial
 	
 	public static Integer calculateFactorial(Integer number)
 	{
-		Integer result = 1;
-		for(int i = number; i>0; i--)
-		{
-			result = result * i;
-		}
+		if(number == 1)		// Recursion break condition
+			return 1;
 		
-		return result;
+		return number * calculateFactorial(number-1);
 	}
 }

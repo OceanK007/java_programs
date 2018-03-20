@@ -13,27 +13,31 @@ import java.util.Scanner;
 	Sample Output: 
 	1,2,3,5,8,13,21
 **/
-public class FibonacciSeries 
+public class FibonacciSeriesRecursion 
 {
+	static Integer length = 0;
+	
 	public static void main(String[] args) 
 	{
 		Scanner scanner = new Scanner(System.in);
-		Integer length = scanner.nextInt();
+		length = scanner.nextInt();
 		Integer firstElement = scanner.nextInt();
 		Integer secondElement = scanner.nextInt();
 		
-		StringBuilder sb = new StringBuilder().append(firstElement).append(",").append(secondElement);
+		System.out.println(firstElement);
+		System.out.println(secondElement);
 		
-		Integer sum = null;
-		for(int i=0;i<length;i++)
-		{
-			sum = firstElement+secondElement;
-			firstElement = secondElement;
-			secondElement = sum;
-					
-			sb.append(",").append(sum);
-		}
+		fibonacciSeries(firstElement, secondElement);
+	}
+	
+	public static void fibonacciSeries(int n1, int n2)
+	{
+		System.out.println(n1+n2);
 		
-		System.out.println(sb.toString());
+		length--;
+		if(length == 0)
+			return ;
+		
+		fibonacciSeries(n2, n1+n2);
 	}
 }
