@@ -35,6 +35,8 @@ acdqgacdqj
 
 public class HR_SuperReducedString 
 {
+	public static String reducedString = "";
+	
 	public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
@@ -46,34 +48,62 @@ public class HR_SuperReducedString
             System.out.println("Empty String");
     }
 		
-	/** Best solution: use recursion **/
-	static String super_reduced_string(String s)
+	/** Using recursion **/
+	static String super_reduced_string(String text)
 	{
-        char[] charArray = s.toCharArray();
-        
-        String result = "";
-        
-        for(int i=0;i<charArray.length;i++)
-        {
-            if(((i+1) < charArray.length) && charArray[i] == charArray[i+1])
-            {
-                String temp = s.substring(i+2, s.length());
-                result = result+temp;
-                
-                return super_reduced_string(result);
-            }
-            else
-            {
-                result = result+charArray[i];
-                
-                if(s.equals(result))
-                {
-                    return result;
-                }
-            }
-        }
-        return result;
+		if(text.equals(reducedString))
+			return text;
+		
+		boolean anyDuplicate = false;
+		for(int i=0;i<text.length();i++)
+		{
+			if((i+1 < text.length()) && (text.charAt(i) == text.charAt(i+1)))
+			{
+				anyDuplicate = true;
+				text =text.substring(0, i) +((i+2 < text.length()) ? text.substring(i+2) : "");
+				break;
+			}
+		}
+		
+		if(anyDuplicate == false)
+		{
+			reducedString = text;
+		}
+		
+		return super_reduced_string(text);
     }
+	
+	/** Using infinite loop **/
+	/*public static String superReducedString(String text)
+	{
+		String reducedString = "";
+		boolean anyDuplicate = false;
+		int i = 0;
+		while(true)
+		{
+			if(text.equals(reducedString))
+				break;
+			
+			if((i+1 < text.length()) && (text.charAt(i) == text.charAt(i+1)))
+			{
+				text =text.substring(0, i) +((i+2 < text.length()) ? text.substring(i+2) : "");
+				i=0;
+				anyDuplicate = true;
+			}
+			else
+			{
+				i++;
+				anyDuplicate = false;
+			}
+			
+			if((i==text.length()-1) && anyDuplicate == false)
+			{
+				reducedString = text;
+			}
+		}
+		
+		return reducedString;
+	}*/
 
 	/** it will fail on 
 	  	input: baab 

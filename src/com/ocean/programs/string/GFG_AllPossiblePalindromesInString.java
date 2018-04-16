@@ -3,7 +3,7 @@ package com.ocean.programs.string;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GOG_AllPossiblePalindromesInString 
+public class GFG_AllPossiblePalindromesInString 
 {
 	public static void main(String[] args) 
 	{
