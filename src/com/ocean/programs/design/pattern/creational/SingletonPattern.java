@@ -35,6 +35,7 @@ final public class SingletonPattern implements Serializable, Cloneable	// Made f
 	
 	public static SingletonPattern getInstance() 
 	{
+		// If you don't want to bear cost of synchronization all the time you call this method, while synchronization is only needed on first class, when Singleton instance is created, use double locking
 		if (instance == null)	// 1: Without lock (not in synchronized block)
 		{
 			synchronized(SingletonPattern.class) 
