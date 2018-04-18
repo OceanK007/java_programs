@@ -1,7 +1,7 @@
 package com.ocean.programs.algorithm;
 
 /**
-Binary Search: Search a sorted array by repeatedly dividing the search interval in half. 
+Binary Search Tree: Search a sorted array by repeatedly dividing the search interval in half. 
 Begin with an interval covering the whole array. If the value of the search key is less than the item in the middle of the interval, 
 narrow the interval to the lower half. Otherwise narrow it to the upper half. Repeatedly check until the value is found or the interval is empty.
 
@@ -34,20 +34,20 @@ public class BinarySearch
 		while(startIndex <= endIndex)
 		{
 			// This is the main logic
-			int checkIndex = startIndex + (endIndex - startIndex)/2;
+			int middleIndex = startIndex + (endIndex - startIndex)/2;
 			
-			if(element == arr[checkIndex])
+			if(element == arr[middleIndex])
 			{
-				return checkIndex;
+				return middleIndex;
 			}
 			
-			if(element < arr[checkIndex])
+			if(element < arr[middleIndex])
 			{
-				endIndex = checkIndex - 1;
+				endIndex = middleIndex - 1;
 			}
 			else
 			{
-				startIndex = checkIndex + 1;
+				startIndex = middleIndex + 1;
 			}
 		}
 			
