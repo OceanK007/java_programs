@@ -19,6 +19,8 @@ i = 3. 5 will move to the beginning and all other elements from 11 to 13 will mo
 
 i = 4. 6 will move to position after 5, and elements from 11 to 13 will move one position ahead of their current position.
 5, 6, 11, 12, 13
+
+Time Complexity: O(n2)
 **/
 public class InsertionSort 
 {

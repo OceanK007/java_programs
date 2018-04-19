@@ -6,50 +6,54 @@ public class QuickSort
 {
 	public static void main(String[] args) 
 	{
-		int[] arr = { 9, 2, 4, 7, 3, 7, 10 };
+		int[] arr = { 11, 9, 2, 4, 13, 7, 3, 7, 10 };
 		
 		System.out.println("Before sorting: "+Arrays.toString(arr));
 		sortElements(arr, 0, arr.length-1);
 		System.out.println("After sorting: "+Arrays.toString(arr));
 	}
 	
-	public static void sortElements(int arr[], int startIndex, int endIndex)
-	{
-		if(startIndex >= endIndex)
-			return ;
-		
-		// This is the main logic
-		int middleIndex = startIndex + (endIndex - startIndex) / 2;
-		int pivot = arr[middleIndex];
+	static void sortElements(int arr[], int startIndex, int endIndex)
+    {
+        if (startIndex < endIndex)
+        {
+            /* pi is partitioning index, arr[pi] is now at right place */
+            int partitionIndex = partition(arr, startIndex, endIndex);
  
-		int tempStartIndex = startIndex, tempEndIndex = endIndex;
-		while (tempStartIndex <= tempEndIndex) 
-		{
-			while (arr[tempStartIndex] < pivot) 
-			{
-				tempStartIndex++;
-			}
+            // Recursively sort elements before partition and after partition
+            sortElements(arr, startIndex, partitionIndex-1);
+            sortElements(arr, partitionIndex+1, endIndex);
+        }
+    }
+	
+	static int partition(int arr[], int startIndex, int endIndex)
+    {
+        int pivot = arr[endIndex]; 
+        int i = (startIndex-1); // index of smaller element
+        for (int j=startIndex; j<endIndex; j++)
+        {
+        	System.out.println("arr[j]: "+arr[j]+" | pivot: "+pivot);
+            // If current element is smaller than or equal to pivot
+            if (arr[j] <= pivot)
+            {
+                i++;
  
-			while (arr[tempEndIndex] > pivot) 
-			{
-				tempEndIndex--;
-			}
+                // swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+            
+            System.out.println("List: "+Arrays.toString(arr));
+        }
  
-			if (tempStartIndex <= tempEndIndex) 
-			{
-				int temp = arr[tempStartIndex];
-				arr[tempStartIndex] = arr[tempEndIndex];
-				arr[tempEndIndex] = temp;
-				tempStartIndex++;
-				tempEndIndex--;
-			}
-		}
+        // swap arr[i+1] and arr[high] (or pivot)
+        int temp = arr[i+1];
+        arr[i+1] = arr[endIndex];
+        arr[endIndex] = temp;
+        
+        System.out.println("List: "+Arrays.toString(arr));
  
-		// recursively sort two sub parts
-		if (startIndex < tempEndIndex)
-			sortElements(arr, startIndex, tempEndIndex);
- 
-		if (endIndex > tempStartIndex)
-			sortElements(arr, tempStartIndex, endIndex);
-	}
+        return i+1;
+    }
 }
