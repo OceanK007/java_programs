@@ -3,7 +3,7 @@ package com.ocean.programs.design.pattern.behavioral;
 /**
 Decorator design pattern is used to modify the functionality of an object at runtime. At the same time other instances of the same class will not be affected by this, so individual object gets the modified behavior. 
 
-Each component can be used on its own or may be wrapped by a decorator.
+Each component can be used on its own or maybe wrapped by a decorator.
 Each decorator has an instance variable that holds the reference to component it decorates(HAS-A relationship).
 The ConcreteComponent is the object we are going to dynamically decorate.
 
@@ -21,16 +21,18 @@ public class DecoratorPattern
 	public static void main(String[] args) 
 	{
 		Pizza pizza = new PeppyPaneer();
-		System.out.println(pizza.getDescription()+" Cost: "+pizza.getCost());
+		System.out.println(pizza.getDescription()+" | Cost: "+pizza.getCost());
 		
 		Pizza pizza2 = new ChickenFiesta();
+		System.out.println(pizza2.getDescription()+" | Cost: "+pizza2.getCost());
 		pizza2 = new FreshTomatoTopping(pizza2); 
+		System.out.println(pizza2.getDescription()+" | Cost: "+pizza2.getCost());
 		pizza2 = new PaneerTopping(pizza2);
-		
-		System.out.println(pizza2.getDescription()+" Cost: "+pizza2.getCost());
+		System.out.println(pizza2.getDescription()+" | Cost: "+pizza2.getCost());
 	}
 }
 
+// Each component can be used on its own or maybe wrapped by a decorator.
 interface Pizza
 {
 	String getDescription();
@@ -69,11 +71,12 @@ class ChickenFiesta implements Pizza
 
 interface ToppingDecorator extends Pizza
 {
-	String getDescription();
+	//String getDescription();
 }
 
 class FreshTomatoTopping implements ToppingDecorator
 {
+	// Each decorator has an instance variable that holds the reference to component it decorates(HAS-A relationship).
 	Pizza pizza;
 	
 	public FreshTomatoTopping(Pizza pizza)
@@ -84,7 +87,7 @@ class FreshTomatoTopping implements ToppingDecorator
 	@Override
 	public String getDescription() 
 	{
-		return "FreshTomatorTopping Decorator";
+		return pizza.getDescription() + " | FreshTomatoTopping Decorator";
 	}
 
 	@Override
@@ -106,7 +109,7 @@ class PaneerTopping implements ToppingDecorator
 	@Override
 	public String getDescription() 
 	{
-		return "PaneerTopping Decorator";
+		return pizza.getDescription() + " | PaneerTopping Decorator";
 	}
 
 	@Override

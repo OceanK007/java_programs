@@ -56,48 +56,24 @@ interface Observer
 	public void update(int runs, int wickets, float overs);
 }
 
-class AverageScoreDisplay implements Observer
+class CurrentScoreDisplay implements Observer
 {
-	private float runRate;
-    private int predictedScore;
-    
-	@Override
-	public void update(int runs, int wickets, float overs) 
-	{
-		this.runRate = (float)runs/overs;
-		this.predictedScore = (int)(this.runRate * 50);
-		display();
-	}
-	
-	public void display()
+    public void update(int runs, int wickets, float overs)
     {
-        System.out.println("\nAverage Score Display: \n"
-                           + "Run Rate: " + runRate +
-                           "\nPredictedScore: " +
-                           predictedScore);
+        System.out.println("\nCurrent Score Display:\n" + "Runs: " + runs + "\nWickets:" + wickets + "\nOvers: " + overs );
     }
 }
 
-class CurrentScoreDisplay implements Observer
+class AverageScoreDisplay implements Observer
 {
-    private int runs, wickets;
-    private float overs;
- 
-    public void update(int runs, int wickets, float overs)
-    {
-        this.runs = runs;
-        this.wickets = wickets;
-        this.overs = overs;
-        display();
-    }
- 
-    public void display()
-    {
-        System.out.println("\nCurrent Score Display:\n"
-                           + "Runs: " + runs +
-                           "\nWickets:" + wickets +
-                           "\nOvers: " + overs );
-    }
+	@Override
+	public void update(int runs, int wickets, float overs) 
+	{
+		float runRate = (float)runs/overs;
+		int predictedScore = (int)(runRate * 50);
+		
+		System.out.println("Average Score Display: \n" + "Run Rate: " + runRate + "\nPredictedScore: " + predictedScore);
+	}
 }
 
 interface Subject
@@ -112,14 +88,9 @@ class CricketData implements Subject
 	int runs;
     int wickets;
     float overs;
-    ArrayList<Observer> observerList;
-    
-    public CricketData()
-    {
-    	observerList = new ArrayList<>();
-    }
-    
-	@Override
+    ArrayList<Observer> observerList = new ArrayList<>();		// One to many dependency is between Subject(One) and Observer(Many).
+
+    @Override
 	public void registerObserver(Observer o) 
 	{
 		observerList.add(o);
@@ -140,6 +111,7 @@ class CricketData implements Subject
 		}
 	}
 
+	// This is just a method to change data (input)
 	public void dataChanged(int runs, int wickets, float overs) 
 	{
 		this.runs = runs;
