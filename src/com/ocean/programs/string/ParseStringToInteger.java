@@ -18,11 +18,21 @@ public class ParseStringToInteger
 			asciiArray[i] = (int) charArray[i];
 		}
 		
-		System.out.println(Arrays.toString(asciiArray));
+		// System.out.println(Arrays.toString(asciiArray));
 		
-		for(int i=0;i<asciiArray.length;i++)
+		Integer target = 0;
+		Integer format = 1;
+		// 1 = 49 = 49 - 48 = 1 => 1 x 100 = 100
+		// 2 = 50 = 50 - 48 = 2 => 2 x 10 = 20
+		// 3 = 51 = 51 - 48 = 3 => 3 x 1 = 3
+		// 100 + 20 + 3 = 123
+		for(int i=asciiArray.length-1;i>=0;i--)
 		{
+			target = target + ((asciiArray[i]-48) * format) ;
 			
+			format= format*10;
 		}
+		
+		System.out.println(target);
 	}
 }
