@@ -13,7 +13,6 @@ public class Test3
 		}
 		finally
 		{
-			throw new ArithmeticException();
 			System.out.println("finally");
 		}
 	}
