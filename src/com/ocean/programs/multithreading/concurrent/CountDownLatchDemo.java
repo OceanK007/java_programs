@@ -6,7 +6,7 @@ import java.util.concurrent.CountDownLatch;
  * e.g. Applications' main thread wants to wait, till other service threads which are responsible for
  * starting framework services have completed started all services. 
  * 
- * CountDownLatch workds by having a counter initialized with number of threads, which is decremented each
+ * CountDownLatch works by having a counter initialized with number of threads, which is decremented each
  * time a thread complete its execution. When count reaches to zero, it means all threads have completed
  * their execution, and the thread waiting on latch resume the execution.
  * 
@@ -43,6 +43,7 @@ public class CountDownLatchDemo
 		try
 		{
 			countDownLatch.await();
+			Thread.sleep(1000);
 			System.out.println("Thread: "+Thread.currentThread().getName()+" finished");
 		}
 		catch(Exception ex)
@@ -77,8 +78,8 @@ class MyThread implements Runnable
 			ex.printStackTrace();
 		}
 		
-		countDownLatch.countDown();
+		countDownLatch.countDown();		// Generally this must be the last statement in this run() method
 		System.out.println(countDownLatch.getCount());
-		System.out.println("Thread: "+Thread.currentThread().getName()+" finished");
+		System.out.println("Thread: "+name+" finished");
 	}
 }
