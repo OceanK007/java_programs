@@ -32,7 +32,7 @@ public class ThreadPoolExecutorCallable
 		* when all threads are active, they will wait in the queue until a thread is available. If any thread terminates 
 		* due to a failure during execution prior to shutdown, a new one will take its place if needed to execute 
 		* subsequent tasks.The threads in the pool will exist until it is explicitly shutdown. **/
-		ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
+		ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
 		// OR // ExecutorService executorService = Executors.newFixedThreadPool(1);
 		List<Future<String>> futureList = new ArrayList<>();
 		
