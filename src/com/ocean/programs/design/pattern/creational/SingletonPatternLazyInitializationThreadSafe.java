@@ -2,7 +2,8 @@ package com.ocean.programs.design.pattern.creational;
 
 import java.io.Serializable;
 
-final public class SingletonPatternLazyInitializationThreadSafe implements Serializable, Cloneable	// Made final so can't be extended, so no inheritance
+//Made final so can't be extended, so no inheritance, making it final is not compulsory.
+final public class SingletonPatternLazyInitializationThreadSafe implements Serializable, Cloneable	
 {
 	private static final long serialVersionUID = 6016675667246341117L;
 	
@@ -25,8 +26,11 @@ final public class SingletonPatternLazyInitializationThreadSafe implements Seria
 	{
 		// Throwing error so you can't create new instance by cloning
 		throw new CloneNotSupportedException();
+		// And if you don't want to throw exception then just return same instance
+		// return instance;
 	}
 
+	// readResolve is used for replacing the object read from the stream. 
 	protected Object readResolve() 
 	{
 		// Using readResolve() method so by serialization you can't create the new instance.
