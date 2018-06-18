@@ -3,6 +3,22 @@ package com.ocean.programs.string;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Sample Input: 
+ * nitin
+ * 
+ * Output: 
+ * n i t i n
+ * n iti n
+ * nitin
+ * 
+ * Sample Input:
+ * geeks
+ * 
+ * Output:
+ * g e e k s
+ * g ee k s
+**/
 public class GFG_AllPossiblePalindromesInString 
 {
 	public static void main(String[] args) 
@@ -50,3 +66,5 @@ public class GFG_AllPossiblePalindromesInString
 		return isPalidrome;
 	}
 }
+
+// Status : still incomplete

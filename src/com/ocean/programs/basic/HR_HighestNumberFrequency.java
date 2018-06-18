@@ -17,7 +17,7 @@ Explanation
 We have one candle of height 1, one candle of height 2, and two candles of height 3. 
 Colleen only blows out the tallest candles, meaning the candles where height=3. Because there are 2 such candles, we print 2 on a new line. 
 **/
-public class HR_HighestNumberOccurence 
+public class HR_HighestNumberFrequency 
 {
 	static int birthdayCakeCandles(int n, int[] ar) {
         int max = 0;

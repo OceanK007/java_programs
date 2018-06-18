@@ -8,7 +8,7 @@ And if two numbers have same occurrence then return -1 else return the highest o
 So here the input: [1,2,3,4,4,8,5,10,2]
 Output: -1 (4,2 have same occurrence i.e. 2) 
 **/
-public class HR_HighestNumberOccurenceNonDuplicates 
+public class HR_HighestFrequencyNonDuplicates 
 {
     public static void main(String[] args) 
     {
