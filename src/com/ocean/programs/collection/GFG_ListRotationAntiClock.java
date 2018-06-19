@@ -1,5 +1,6 @@
 package com.ocean.programs.collection;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /** Given a singly linked list, rotate the linked list counter-clockwise by k nodes. Where k is a given positive integer smaller than or equal to length of the linked list. For example, if the given linked list is 10->20->30->40->50->60 and k is 4, the list should be modified to 50->60->10->20->30->40.
@@ -21,13 +22,38 @@ Example:
 Output:
 5 6 7 8 1 2 3 4
 **/
-public class ListRotationAntiClock 
+public class GFG_ListRotationAntiClock 
 {
 	public static void main(String[] args) 
 	{
 		Scanner scanner = new Scanner(System.in);
 		int listSize = scanner.nextInt();
-		String arrayString = scanner.nextLine();
+		int[] numberArray = new int[listSize];
+		for(int i=0;i<listSize;i++)
+		{
+			numberArray[i] = scanner.nextInt();
+		}
 		int rotationPointer = scanner.nextInt();
+		
+		reverseList(numberArray, rotationPointer);
+	}
+	
+	public static void reverseList(int[] numberArray, int rotationPointer)
+	{
+		int[] newArray = new int[numberArray.length];
+		for(int i=0;i<numberArray.length;i++)
+		{
+			if(i<rotationPointer)
+			{
+				int index = numberArray.length - (rotationPointer - i);
+				newArray[i] = numberArray[index];
+			}
+			else
+			{
+				newArray[i] = numberArray[i-rotationPointer];
+			}
+		}
+		
+		System.out.println(Arrays.toString(newArray));
 	}
 }

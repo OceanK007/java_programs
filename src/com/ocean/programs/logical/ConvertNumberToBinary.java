@@ -1,4 +1,4 @@
-package com.ocean.programs.basic;
+package com.ocean.programs.logical;
 
 import java.util.Scanner;
 

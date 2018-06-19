@@ -27,7 +27,7 @@ u -> w
 t -> v
 z -> b
 **/
-public class HR_CaesarCipher 
+public class HR_CaesarCipher_RotateString 
 {
     public static void main(String[] args) 
     {

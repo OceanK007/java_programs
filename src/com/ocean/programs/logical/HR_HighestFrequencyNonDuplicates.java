@@ -1,4 +1,4 @@
-package com.ocean.programs.basic;
+package com.ocean.programs.logical;
 
 /**
 You have given an array like [1,2,3,4,4,8,5,10,2]
