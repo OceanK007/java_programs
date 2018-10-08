@@ -6,7 +6,7 @@ import java.util.Scanner;
  	Sample Input: e3re4r2a2sd38r
  	Sample Output: 342238
 **/
-public class FindNumber 
+public class FetchNumbersFromString 
 {
 	public static void main(String[] args) 
 	{
