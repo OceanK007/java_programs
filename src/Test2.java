@@ -1,92 +1,60 @@
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
-public class Test2 
+public class Test2
 {
-	public static void main(String[] args) 
+	public static void main(String args[] ) throws Exception 
 	{
-		Map<String, Integer> map = new HashMap<>();
-		Map<String, Integer> syncMap = Collections.synchronizedMap(map);
-		MapHelper1 mapHelper1 = new MapHelper1(syncMap);
-		MapHelper2 mapHelper2 = new MapHelper2(syncMap);
-		MapHelper3 mapHelper3 = new MapHelper3(syncMap);
-		
-		for (Map.Entry<String, Integer> e : syncMap.entrySet()) 
-		{
-			System.out.println(e.getKey() + "=" + e.getValue());
-		}
-	}
-}
-
-class MapHelper1 implements Runnable
-{
-	Map<String, Integer> map;
-	
-	public MapHelper1(Map<String, Integer> map) 
-	{
-		this.map = map;
-		new Thread(this, "MapHelper1").start();
-	}
-	
-	@Override
-	public void run() 
-	{
-		map.put("One", 1);
-		
-		try {
-			System.out.println("MapHelper1 sleeping");
-			Thread.sleep(100);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
-}
-
-class MapHelper2 implements Runnable
-{
-	Map<String, Integer> map;
-	
-	public MapHelper2(Map<String, Integer> map) 
-	{
-		this.map = map;
-		new Thread(this, "MapHelper2").start();
-	}
-	
-	@Override
-	public void run() 
-	{
-		map.put("Two", 2);
-		
-		try {
-			System.out.println("MapHelper2 sleeping");
-			Thread.sleep(100);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
-}
-
-class MapHelper3 implements Runnable
-{
-	Map<String, Integer> map;
-	
-	public MapHelper3(Map<String, Integer> map) 
-	{
-		this.map = map;
-		new Thread(this, "MapHelper3").start();
-	}
-	
-	@Override
-	public void run() 
-	{
-		map.put("Three", 3);
-		
-		try {
-			System.out.println("MapHelper3 sleeping");
-			Thread.sleep(100);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
+		//Scanner
+        Scanner s = new Scanner(System.in);
+        int sticks = s.nextInt();                 // Reading input from STDIN
+        
+        int x[] = new int[sticks];
+        int y[] = new int[sticks];
+       
+        for(int i=0;i<sticks;i++)
+        {
+        	x[i]= s.nextInt();
+        	y[i]= s.nextInt();
+        }
+        
+        System.out.println(Arrays.toString(x));
+        System.out.println(Arrays.toString(y));
+     
+        for(int i=0;i<y.length;i++)
+        {
+        	for(int j=0;j<y.length-i;j++)
+			{
+				if((j+1 <y.length) && y[j] > y[j+1])
+				{
+					int temp = y[j];
+					y[j] = y[j+1];
+					y[j+1] = temp;
+					
+					int temp2 = x[j];
+					x[j] = x[j+1];
+					x[j+1] = temp2;
+				}
+			}
+        }
+        
+        System.out.println(Arrays.toString(x));
+        System.out.println(Arrays.toString(y));
+        double d1= Math.sqrt(Math.pow((y[sticks-1]-y[0]),2)+ Math.pow((x[sticks-1]-x[0]),2));
+      
+        for(int j=1;j<y.length;j++)
+        {
+        	int x2= x[j];
+        	int x1= x[j-1];
+        	int y2= y[j];
+        	int y1= y[j-1];
+        	
+        	double d= Math.sqrt(Math.pow((y2-y1),2)+ Math.pow((x2-x1),2));
+        	d1=d1+d;
+        	System.out.println(d1);
+        }
+        
+    }
 }

@@ -1,6 +1,19 @@
+package com.ocean.programs.string;
+
 import java.util.Scanner;
 
-public class Test
+/**
+ input: 
+ 	2
+ 	geeksforgeek
+	acaaabbbacdddd
+
+ Output:
+	gksforgk
+	acac
+**/
+
+public class GFG_RecursivelyRemoveAjdacentDuplicates 
 {
 	public static String reducedString = "";
 	
