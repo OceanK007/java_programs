@@ -13,6 +13,6 @@ public class PriorityQueueOutput
 		PriorityQueue<String> queue2 = new PriorityQueue<>();
 		queue2.add("One");
 		queue2.add("One");
-		System.out.println(queue2.size());
+		System.out.println(queue2.size());	// 2 // allow duplicates
 	}
 }

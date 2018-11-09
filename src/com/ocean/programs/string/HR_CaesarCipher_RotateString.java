@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 /**
 Sample Input
-11
+11			// Total characters
 middle-Outz
-2
+2			// The number of letters to rotate the alphabet by
 
 Sample Output
 okffng-Qwvb
@@ -27,7 +27,7 @@ u -> w
 t -> v
 z -> b
 **/
-public class CaesarCipher 
+public class HR_CaesarCipher_RotateString 
 {
     public static void main(String[] args) 
     {

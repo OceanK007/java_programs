@@ -71,13 +71,15 @@ public class ExecutorServiceCallable
 		{
 			try
 			{
-				// get(): 
+				// cancel(true)
 				/** Attempts to cancel execution of this task. This attempt will fail if the task has already completed, has already been cancelled, 
 				* or could not be cancelled for some other reason. If successful, and this task has not started when cancel is called, this task should never run. 
 				* If the task has already started, then the mayInterruptIfRunning parameter determines whether the thread executing this task should be 
 				* interrupted in an attempt to stop the task. After this method returns, subsequent calls to isDone will always return true. 
-				* Subsequent calls to isCancelled will always return true if this method returned true. System.out.println(fut.cancel(true)); **/
+				* Subsequent calls to isCancelled will always return true if this method returned true. **/
+				// System.out.println(fut.cancel(true));
 				
+				// get():
 				// Waits if necessary for the computation to complete, and then retrieves its result.
 				System.out.println(fut.get());
 				

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class ExecutorServiceRunnable 
@@ -12,6 +13,7 @@ public class ExecutorServiceRunnable
 	public static void main(String[] args) 
 	{
 		ExecutorService executorService = Executors.newFixedThreadPool(1);
+		// OR ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
 		List<Future<?>> futureList = new ArrayList<>();
 		
 		ThreadOne t1 = new ThreadOne();
@@ -27,24 +29,29 @@ public class ExecutorServiceRunnable
 		{
 			try
 			{
-				// get(): 
-				/** Attempts to cancel execution of this task. This attempt will fail if the task has already completed, has already been cancelled, 
-				* or could not be cancelled for some other reason. If successful, and this task has not started when cancel is called, this task should never run. 
-				* If the task has already started, then the mayInterruptIfRunning parameter determines whether the thread executing this task should be 
-				* interrupted in an attempt to stop the task. After this method returns, subsequent calls to isDone will always return true. 
-				* Subsequent calls to isCancelled will always return true if this method returned true. System.out.println(fut.cancel(true)); **/
+				// cancel(true)
+				/** Attempts to cancel execution of this task. This attempt will fail if the task has already completed, 
+  			    * has already been cancelled, or could not be cancelled for some other reason. If successful, and this 
+  			    * task has not started when cancel is called, this task should never run. If the task has already started, 
+  			    * then the mayInterruptIfRunning parameter determines whether the thread executing this task should be 
+				* interrupted in an attempt to stop the task. After this method returns, subsequent calls to isDone will 
+				* always return true.Subsequent calls to isCancelled will always return true if this method returned true.**/
+				// System.out.println(fut.cancel(true));
 				
+				// get():
 				// Waits if necessary for the computation to complete, and then retrieves its result.
 				System.out.println(fut.get());
 				
 				// get(1000, TimeUnit.MILLISECONDS):
-				/** Waits if necessary for at most the given time for the computation to complete, and then retrieves its result, if available.
-				* Here, we can specify the time to wait for the result, it’s useful to avoid current thread getting blocked for longer time. **/ 
+				/** Waits if necessary for at most the given time for the computation to complete, and then retrieves its 
+				* result, if available.Here, we can specify the time to wait for the result, it’s useful to avoid current 
+				* thread getting blocked for longer time. **/  
 				// System.out.println(fut.get(1000, TimeUnit.MILLISECONDS));
 				
 				// isDone():
 				/** Returns true if this task completed. 
-				* Completion may be due to normal termination, an exception, or cancellation -- in all of these cases, this method will return true **/
+				* Completion may be due to normal termination, an exception, or cancellation -- in all of these cases, 
+				* this method will return true **/
 				// System.out.println(fut.isDone());
 	
 				// isCancelled(): 
