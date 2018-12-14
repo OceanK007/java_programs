@@ -1,6 +1,7 @@
 package com.ocean.programs.algorithm.search;
 
 /**
+ 	We will have a sorted array.
  	Time complexity: O(n)
 **/
 public class LinearSearch 
