@@ -1,4 +1,4 @@
-package com.ocean.programs.algorithm;
+package com.ocean.programs.algorithm.search;
 
 /**
  	Time complexity: O(n)

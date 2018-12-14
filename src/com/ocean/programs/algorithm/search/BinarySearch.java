@@ -1,4 +1,4 @@
-package com.ocean.programs.algorithm;
+package com.ocean.programs.algorithm.search;
 
 /**
 Binary Search Tree: Search a sorted array by repeatedly dividing the search interval in half. 
