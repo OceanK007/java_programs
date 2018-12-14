@@ -37,7 +37,7 @@ interface Internet
 class RealInternet implements Internet
 {
 	@Override
-	public void connectTo(String serverHost)
+	public void connectTo(String serverHost) throws Exception
 	{
 		System.out.println("Connecting to: "+serverHost);
 	}
@@ -68,3 +68,29 @@ class ProxyInternet implements Internet
 		internet.connectTo(serverHost);
 	}
 }
+
+
+//class ProxyInternet extends RealInternet
+//{
+//	private static List<String> bannedSites;
+//	
+//	static
+//	{
+//		bannedSites = new ArrayList<>();
+//		bannedSites.add("abc.com");
+//		bannedSites.add("ijk.com");
+//		bannedSites.add("def.com");
+//		bannedSites.add("xyz.com");
+//	}
+//	
+//	@Override
+//	public void connectTo(String serverHost) throws Exception
+//	{
+//		if(bannedSites.contains(serverHost.toLowerCase()))
+//		{
+//			throw new Exception("Access Denied");
+//		}
+//		
+//		super.connectTo(serverHost);
+//	}
+//}
