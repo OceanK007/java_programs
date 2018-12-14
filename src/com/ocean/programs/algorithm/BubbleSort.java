@@ -8,6 +8,8 @@ import java.util.Arrays;
 	Time complexity:
 	Worst and Average Case Time Complexity: O(n2). Worst case occurs when array is reverse sorted.
 	Best Case Time Complexity: O(n). Best case occurs when array is already sorted.
+	
+	The bubble sort gets its name because elements tend to move up into the correct order like bubbles rising to the surface.
 **/
 public class BubbleSort 
 {
@@ -34,6 +36,8 @@ public class BubbleSort
 					arr[j+1] = temp;
 				}
 			}
+			
+			System.out.println(Arrays.toString(arr));
 		}
 	}
 }
