@@ -7,7 +7,7 @@ narrow the interval to the lower half. Otherwise narrow it to the upper half. Re
 
 Time complexity: O(log n)
 **/
-public class BinarySearch 
+public class BinarySearchTree 
 {
 	public static void main(String[] args) 
 	{
@@ -34,7 +34,10 @@ public class BinarySearch
 		while(startIndex <= endIndex)
 		{
 			// This is the main logic
+			System.out.println("startIndex: "+startIndex + " | endIndex: "+ endIndex + " | (endIndex - startIndex)/2: "+ (endIndex - startIndex)/2);
 			int middleIndex = startIndex + (endIndex - startIndex)/2;
+			System.out.println("middleIndex: "+middleIndex);
+			
 			
 			if(element == arr[middleIndex])
 			{
