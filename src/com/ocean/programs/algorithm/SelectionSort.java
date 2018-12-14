@@ -25,6 +25,8 @@ arr[] = 64 25 12 22 11
 
 
 Time Complexity: O(n2) as there are two nested loops.
+
+It's called SelectionSort, because we select the minimum valued element by comparing and swaps it.
 */
 public class SelectionSort 
 {
@@ -55,7 +57,7 @@ public class SelectionSort
 			arr[i] = arr[minValueIndex];
 			arr[minValueIndex] = temp;
 			
-			//System.out.println("After sorting: "+Arrays.toString(arr));
+			System.out.println(Arrays.toString(arr));
 		}
 	}
 }
