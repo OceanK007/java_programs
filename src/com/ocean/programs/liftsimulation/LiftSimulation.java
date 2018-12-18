@@ -1,13 +1,19 @@
 package com.ocean.programs.liftsimulation;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * The objective of this exercise is to create a lift simulation program, ideal solution will be capable of working with multiple lifts, however the solution should support at least two lifts.
@@ -45,7 +51,7 @@ import java.util.concurrent.Future;
 public class LiftSimulation 
 {
 	public static void main(String[] args) 
-	{
+	{		
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Enter no. of floors: ");
 		int noOfFloors = scanner.nextInt();
@@ -56,17 +62,17 @@ public class LiftSimulation
 		System.out.println("You are in a "+noOfFloors+" storied building with having "+noOfLifts+" elevators");
 		System.out.println("**********************************************************");
 		
-		System.out.println("Request format (From lift lobby):");
-		System.out.println("\t OUT, (UP/DOWN), CurrentFloor");
-		System.out.println("\t Example: OUT, UP, 4");
-		System.out.println("Request format (From inside lift):");
-		System.out.println("\t IN, LiftNumber, DestinationFloor");
-		System.out.println("\t Example: IN, 1, 10");
-		System.out.println("");
+//		System.out.println("Request format (From lift lobby):");
+//		System.out.println("\t OUT, (UP/DOWN), CurrentFloor");
+//		System.out.println("\t Example: OUT, UP, 4");
+//		System.out.println("Request format (From inside lift):");
+//		System.out.println("\t IN, LiftNumber, DestinationFloor");
+//		System.out.println("\t Example: IN, 1, 10");
+//		System.out.println("");
 		
-		System.out.println("Type EXIT to exit sending request");
+		//System.out.println("Type EXIT to exit sending request");
 		// Skipping next line
-		scanner.nextLine();
+		//scanner.nextLine();
 				
 		Building building = new Building();
 		building.setTotalFloors(noOfFloors);
@@ -81,10 +87,17 @@ public class LiftSimulation
 		
 		while(true) 
 		{
-			System.out.print("Enter request: ");
+			//System.out.print("Enter request: ");			
+			//String requestString = scanner.nextLine().trim();
 			
-			String requestString = scanner.nextLine().trim();
-			if(requestString.equalsIgnoreCase("exit"))
+			String requestString = JOptionPane.showInputDialog
+			("Request format (From lift lobby): OUT, (UP/DOWN), CurrentFloor\n" +
+			 "\t Example: OUT, UP, 4 \n\n"+
+			 "\t Request format (From inside lift): IN, LiftNumber, DestinationFloor\n"+ 
+			 "\t Example: IN, 1, 10 \n\n"+
+					"Enter request: "
+			);
+			if(requestString == null || requestString.equals(""))
 			{
 				System.out.println("Thank you for using lift simulator.");
 				executorService.shutdown();
@@ -93,7 +106,7 @@ public class LiftSimulation
 			else 
 			{
 				System.out.println(requestString);
-				String[] stringArray = requestString.split(",");
+				String[] stringArray = requestString.trim().split(",");
 				
 				Request request = new Request();		
 				
@@ -123,26 +136,45 @@ public class LiftSimulation
 			}
 		}
 	}	
+	
+	
+//	public static String showInputDialog() {
+//		// a jframe here isn't strictly necessary, but it makes the example a little more real
+//	    JFrame frame = new JFrame("InputDialog Example #1");
+//	    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//
+//	    // prompt the user to enter their name
+//	    String requestString = JOptionPane.showInputDialog(frame, "Send request");
+//
+//	    // get the user's input. note that if they press Cancel, 'name' will be null
+//	    System.out.print("Request is: "+ requestString);
+//	    
+//	    return requestString;
+//	}
 }
 
 class CheckRequests implements Callable<List<Request>>
 {
 	List<Request> requestList;
 	Building building;
+	ExecutorService executorService = null; // Creating thread pool 
+	List<Future<Integer>> futureList = new ArrayList<>();
+	Map<Integer, Lift> liftMap = new TreeMap<>();
 	
 	CheckRequests(List<Request> requestList, Building building)
 	{
 		this.requestList = requestList;
 		this.building = building;
+		
+		if(executorService == null)
+		{
+			executorService = Executors.newFixedThreadPool(building.getTotalLifts());
+		}
 	}
 	
 	@Override
 	public List<Request> call() throws Exception 
 	{
-		// Creating thread pool 
-		ExecutorService executorService = Executors.newFixedThreadPool(building.getTotalLifts());
-		List<Future<Request>> futureList = new ArrayList<>();
-		
 		while(true) 
 		{
 			if(requestList.size() == 0)
@@ -152,25 +184,115 @@ class CheckRequests implements Callable<List<Request>>
 			else
 			{
 				System.out.println("requestList.size(): "+requestList.size());
-				Thread.sleep(5000);
+				
+				Iterator<Request> itr = requestList.iterator();
+				while(itr.hasNext())
+				{
+					Request req = itr.next();
+					processRequest(req);
+					itr.remove();
+				}
 			}
 		}
 	}	
+	
+	public void processRequest(Request request) 
+	{
+		if(request.getLiftNo() == null)	// Request received from lift lobby
+		{
+			System.out.println("From Lift Lobby");
+		}
+		else // Request received from inside lift
+		{
+			System.out.println("From Inside Lift");
+			
+			// START: Setting Lift parameters //
+			Lift lift = new Lift();
+			
+			lift.setLiftNo(request.getLiftNo());
+			lift.setFinalFloor(request.getToFloorNo());
+			
+			Map<Integer, Request> reqMap = new TreeMap<Integer, Request>();
+			reqMap.put(request.getLiftNo(), request);
+			lift.setRequestMap(reqMap);
+			// END: Setting Lift parameters //
+			
+			if(liftMap.containsKey(request.getLiftNo())) 
+			{
+				Lift currentLift = liftMap.get(request.getLiftNo());
+				Map<Integer,Request> requestMap = currentLift.getRequestMap();
+				Integer newFloorRequested = request.getToFloorNo();
+				
+				if(currentLift.getCurrentFloor() <= newFloorRequested)
+				{
+					requestMap.put(request.getToFloorNo(), request);
+				}
+								
+				//for(Future<Integer> futureElement : futureList) 
+				//{
+				//	System.out.println(futureElement);
+				//}
+			}
+			else
+			{
+				liftMap.put(request.getLiftNo(), lift);
+				Future<Integer> future = executorService.submit(new LiftThread(request.getLiftNo(), liftMap));
+				futureList.add(future);
+			}
+		}
+	}
 }
 
-class ServeRequest implements Callable<Request>
+class LiftThread implements Callable<Integer>
 {
-	private Request request;
+	private Integer liftNo;
+	private Map<Integer, Lift> liftMap;
 	
-	public ServeRequest(Request request) {
-		this.request = request;
+	public LiftThread(Integer liftNo, Map<Integer, Lift> liftMap) {
+		this.liftNo = liftNo;
+		this.liftMap = liftMap;
 	}
 	
 	@Override
-	public Request call() throws Exception 
+	public Integer call() throws Exception 
 	{
-		Thread.sleep(1000);
-		System.out.println("Inside call(): "+Thread.currentThread().getName());
-		return null;
+		if(liftMap.containsKey(liftNo))
+		{
+			Lift lift = liftMap.get(liftNo);
+			Map<Integer,Request> requestMap = lift.getRequestMap();
+			int floorsToCover = lift.getFinalFloor() - lift.getCurrentFloor();
+						
+			Iterator<Map.Entry<Integer, Request>> iterator = requestMap.entrySet().iterator();
+			System.out.println("Size: "+requestMap.size());
+			while(iterator.hasNext()) 
+			{
+				Map.Entry<Integer, Request> requestEntrySet = iterator.next();
+				Request request = requestEntrySet.getValue();
+								
+				for(int i=0;i<=floorsToCover;i++)
+				{
+					System.out.println("Size: "+requestMap.size());
+					
+					lift.setCurrentFloor(i+1);
+					
+					Thread.sleep(2000); 	// 10 seconds to cross each floor
+										
+					if(lift.getFinalFloor() == (i+1))
+					{
+						Thread.sleep(2000); 	// 20 seconds to serve the floor request
+						System.out.println("Lift "+liftNo+" stopped on "+(i+1)+" floor to serve request ("+request.getRequestedFrom()+","+request.getDirection()+","+request.getToFloorNo()+")");
+					}
+					
+					System.out.println("Lift "+liftNo+" crossed floor: "+(i+1));
+					
+				}
+				
+				iterator.remove();	// Removing request on fulfill
+			}
+			
+			System.out.println("Size: "+requestMap.size());
+		}
+		//System.out.println("Inside call(): "+Thread.currentThread().getName());
+		return liftNo;
 	}	
 }

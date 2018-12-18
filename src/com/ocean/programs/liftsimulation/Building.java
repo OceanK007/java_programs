@@ -1,19 +1,20 @@
 package com.ocean.programs.liftsimulation;
 
 public class Building {
-	private int totalFloors;
-	private int totalLifts;
+	private Integer totalFloors;
+	private Integer totalLifts;
 	
-	public int getTotalFloors() {
+	public Integer getTotalFloors() {
 		return totalFloors;
 	}
-	public void setTotalFloors(int totalFloors) {
+	public void setTotalFloors(Integer totalFloors) {
 		this.totalFloors = totalFloors;
 	}
-	public int getTotalLifts() {
+	public Integer getTotalLifts() {
 		return totalLifts;
 	}
-	public void setTotalLifts(int totalLifts) {
+	public void setTotalLifts(Integer totalLifts) {
 		this.totalLifts = totalLifts;
 	}
+	
 }

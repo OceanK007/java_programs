@@ -1,28 +1,28 @@
 package com.ocean.programs.liftsimulation;
 
 public class Request {
-	private int fromFloorNo;
-	private int toFloorNo;
-	private int liftNo;
+	private Integer fromFloorNo;
+	private Integer toFloorNo;
+	private Integer liftNo;
 	private Direction direction;
 	private RequestedFrom requestedFrom;
 	
-	public int getFromFloorNo() {
+	public Integer getFromFloorNo() {
 		return fromFloorNo;
 	}
-	public void setFromFloorNo(int fromFloorNo) {
+	public void setFromFloorNo(Integer fromFloorNo) {
 		this.fromFloorNo = fromFloorNo;
 	}
-	public int getToFloorNo() {
+	public Integer getToFloorNo() {
 		return toFloorNo;
 	}
-	public void setToFloorNo(int toFloorNo) {
+	public void setToFloorNo(Integer toFloorNo) {
 		this.toFloorNo = toFloorNo;
 	}
-	public int getLiftNo() {
+	public Integer getLiftNo() {
 		return liftNo;
 	}
-	public void setLiftNo(int liftNo) {
+	public void setLiftNo(Integer liftNo) {
 		this.liftNo = liftNo;
 	}
 	public Direction getDirection() {
@@ -37,9 +37,11 @@ public class Request {
 	public void setRequestedFrom(RequestedFrom requestedFrom) {
 		this.requestedFrom = requestedFrom;
 	}
+	
 	@Override
 	public String toString() {
 		return "Request [fromFloorNo=" + fromFloorNo + ", toFloorNo=" + toFloorNo + ", liftNo=" + liftNo
 				+ ", direction=" + direction + ", requestedFrom=" + requestedFrom + "]";
 	}
+	
 }
