@@ -10,6 +10,7 @@ public class Lift {
 	private Integer finalFloor;
 	private Map<Integer, Request> requestMap;	// key: floorNo, value: Request object
 	private boolean isServing;
+	private Direction direction;
 	
 	public Integer getLiftNo() {
 		return liftNo;
@@ -52,6 +53,12 @@ public class Lift {
 	}
 	public void setServing(boolean isServing) {
 		this.isServing = isServing;
+	}
+	public Direction getDirection() {
+		return direction;
+	}
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
 	
 }

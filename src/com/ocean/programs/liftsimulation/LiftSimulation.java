@@ -159,7 +159,9 @@ class CheckRequests implements Callable<List<Request>>
 	Building building;
 	ExecutorService executorService = null; // Creating thread pool 
 	List<Future<Integer>> futureList = new ArrayList<>();
-	Map<Integer, Lift> liftMap = new TreeMap<>();
+	Map<Integer, Lift> liftMap = new TreeMap<>();	// Key: liftNo, Value: Lift
+	Direction directionFromLiftLobby = Direction.UP;
+	Integer currentFloorFromLiftLobby;
 	
 	CheckRequests(List<Request> requestList, Building building)
 	{
@@ -183,7 +185,7 @@ class CheckRequests implements Callable<List<Request>>
 			}
 			else
 			{
-				System.out.println("requestList.size(): "+requestList.size());
+				//System.out.println("requestList.size(): "+requestList.size());
 				
 				Iterator<Request> itr = requestList.iterator();
 				while(itr.hasNext())
@@ -201,19 +203,23 @@ class CheckRequests implements Callable<List<Request>>
 		if(request.getLiftNo() == null)	// Request received from lift lobby
 		{
 			System.out.println("From Lift Lobby");
+			directionFromLiftLobby = request.getDirection();	
+			currentFloorFromLiftLobby = request.getFromFloorNo();
+			System.out.println("Request received from floor: "+currentFloorFromLiftLobby+" for direction: "+directionFromLiftLobby.toString());
 		}
 		else // Request received from inside lift
 		{
 			System.out.println("From Inside Lift");
 			
 			// START: Setting Lift parameters //
-			Lift lift = new Lift();
+			Map<Integer, Request> reqMap = new TreeMap<Integer, Request>();
+			reqMap.put(request.getToFloorNo(), request);
 			
+			Lift lift = new Lift();			
 			lift.setLiftNo(request.getLiftNo());
 			lift.setFinalFloor(request.getToFloorNo());
-			
-			Map<Integer, Request> reqMap = new TreeMap<Integer, Request>();
-			reqMap.put(request.getLiftNo(), request);
+			lift.setCurrentFloor(currentFloorFromLiftLobby);
+			lift.setDirection(directionFromLiftLobby);
 			lift.setRequestMap(reqMap);
 			// END: Setting Lift parameters //
 			
@@ -223,10 +229,29 @@ class CheckRequests implements Callable<List<Request>>
 				Map<Integer,Request> requestMap = currentLift.getRequestMap();
 				Integer newFloorRequested = request.getToFloorNo();
 				
-				if(currentLift.getCurrentFloor() <= newFloorRequested)
+				if(directionFromLiftLobby.equals(Direction.UP))
 				{
-					requestMap.put(request.getToFloorNo(), request);
+					if(currentLift.getCurrentFloor() <= newFloorRequested)
+					{
+						if(newFloorRequested > currentLift.getFinalFloor())
+						{
+							currentLift.setFinalFloor(newFloorRequested);
+						}
+						requestMap.put(request.getToFloorNo(), request);
+					}
 				}
+				else
+				{
+					if(currentLift.getCurrentFloor() >= newFloorRequested)
+					{
+						if(newFloorRequested < currentLift.getFinalFloor())
+						{
+							currentLift.setFinalFloor(newFloorRequested);
+						}
+						requestMap.put(request.getToFloorNo(), request);
+					}
+				}
+				
 								
 				//for(Future<Integer> futureElement : futureList) 
 				//{
@@ -260,38 +285,47 @@ class LiftThread implements Callable<Integer>
 		{
 			Lift lift = liftMap.get(liftNo);
 			Map<Integer,Request> requestMap = lift.getRequestMap();
-			int floorsToCover = lift.getFinalFloor() - lift.getCurrentFloor();
-						
-			Iterator<Map.Entry<Integer, Request>> iterator = requestMap.entrySet().iterator();
-			System.out.println("Size: "+requestMap.size());
-			while(iterator.hasNext()) 
+			
+			//System.out.println("lift.getFinalFloor(): "+lift.getFinalFloor());
+			//System.out.println("lift.getCurrentFloor(): "+lift.getCurrentFloor());
+				
+			while(true) 
 			{
-				Map.Entry<Integer, Request> requestEntrySet = iterator.next();
-				Request request = requestEntrySet.getValue();
-								
-				for(int i=0;i<=floorsToCover;i++)
+				//System.out.println("lift.getCurrentFloor(): "+lift.getCurrentFloor());
+				//System.out.println("lift.getFinalFloor(): "+lift.getFinalFloor());
+				
+				if(lift.getCurrentFloor().equals(lift.getFinalFloor()))
 				{
-					System.out.println("Size: "+requestMap.size());
-					
-					lift.setCurrentFloor(i+1);
-					
-					Thread.sleep(2000); 	// 10 seconds to cross each floor
-										
-					if(lift.getFinalFloor() == (i+1))
-					{
-						Thread.sleep(2000); 	// 20 seconds to serve the floor request
-						System.out.println("Lift "+liftNo+" stopped on "+(i+1)+" floor to serve request ("+request.getRequestedFrom()+","+request.getDirection()+","+request.getToFloorNo()+")");
-					}
-					
-					System.out.println("Lift "+liftNo+" crossed floor: "+(i+1));
-					
+					requestMap.clear();
+					liftMap.remove(liftNo);
+					break;
 				}
 				
-				iterator.remove();	// Removing request on fulfill
+				for(int i=lift.getCurrentFloor();i<=lift.getFinalFloor();i++)
+				{
+					lift.setCurrentFloor(i);
+					
+					//System.out.println("Size: "+requestMap.size());
+					
+					Thread.sleep(2000); 	// 10 seconds to cross each floor
+					
+					if(requestMap.containsKey(new Integer(i)))	// Means have a request for this floor
+					{
+						Request request = requestMap.get(new Integer(i));
+						System.out.println("Lift "+liftNo+" stopped on "+(i)+" floor to serve request ("+request.getRequestedFrom()+","+liftNo+","+request.getToFloorNo()+")");
+						Thread.sleep(2000); 	// 20 seconds to serve the floor request
+					}
+					else
+					{						
+						System.out.println("Lift "+liftNo+" crossed floor: "+(i));
+					}		
+					
+				}				
 			}
-			
-			System.out.println("Size: "+requestMap.size());
+						
+			//System.out.println("Size: "+requestMap.size());
 		}
+		
 		//System.out.println("Inside call(): "+Thread.currentThread().getName());
 		return liftNo;
 	}	
