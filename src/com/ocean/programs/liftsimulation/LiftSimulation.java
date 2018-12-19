@@ -49,6 +49,22 @@ import javax.swing.JOptionPane;
  *  
  *  The solution should be accompanied by a status-cum-design document and you need to provide full coverage for JUints.
  *  
+ *  Input Examples:
+ *  
+ *  OUT, DOWN, 10
+	IN, 1, 3
+	
+	OUT, UP, 4
+	IN, 2, 10
+	
+	------------------------------
+	OUT, UP, 4
+	IN, 1, 9
+	
+	OUT, DOWN, 9
+	IN, 2, 2
+	IN, 2, 5
+ *  
 **/
 
 public class LiftSimulation 
