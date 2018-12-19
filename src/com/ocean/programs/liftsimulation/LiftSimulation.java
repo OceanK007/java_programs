@@ -86,7 +86,7 @@ public class LiftSimulation
 		
 		// Creating a thread pool
 		//ExecutorService executorService = Executors.newFixedThreadPool(1);
-		ExecutorService executorService = Executors.newFixedThreadPool(building.getTotalLifts());
+		ExecutorService executorService = Executors.newFixedThreadPool(building.getTotalLifts()+1);
 		Future<String> future = executorService.submit(new CheckRequests(requestList, building, executorService));
 		
 		while(true) 
@@ -266,7 +266,7 @@ class CheckRequests implements Callable<String>
 			{
 				liftMap.put(request.getLiftNo(), lift);
 				Future<Integer> future = executorService.submit(new LiftThread(request.getLiftNo(), liftMap));
-				futureList.add(future);
+				//futureList.add(future);
 			}
 		}
 		
