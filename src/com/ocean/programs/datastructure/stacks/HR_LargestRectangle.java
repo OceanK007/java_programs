@@ -1,6 +1,8 @@
 package com.ocean.programs.datastructure.stacks;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /** 
 Skyline Real Estate Developers is planning to demolish a number of old, unoccupied buildings and construct a shopping mall in their place. Your task is to find the largest solid area in which the mall can be constructed.
@@ -43,7 +45,9 @@ public class HR_LargestRectangle
 		String buildingHeights = scanner.nextLine();
 		System.out.println(totalBuilding);
 		System.out.println(buildingHeights);
-		//int[] heightArray = 
+		String[] stringArray = buildingHeights.split(" ");
+		int[] intArray = Stream.of(stringArray).mapToInt(Integer::parseInt).toArray();
+		System.out.println(Arrays.toString(intArray));
 	}
 	
 	//public static findMaximumArea()
