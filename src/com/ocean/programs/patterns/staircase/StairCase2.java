@@ -1,4 +1,4 @@
-package com.ocean.programs.staircase;
+package com.ocean.programs.patterns.staircase;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,16 +16,16 @@ Output Format
 
 Draw a staircase of height N in the format given below.
 For example:
-######
-##### 
-####  
-###   
+#     
 ##    
-#  
+###   
+####  
+##### 
+######
 Staircase of height 6, note that last line has 0 spaces before it.
 **/
 
-public class StairCase4 
+public class StairCase2 
 {
 	public static void main(String[] args) 
 	{
@@ -38,7 +38,7 @@ public class StairCase4
 		{
 			for(int j=1; j<=height ; j++)
 			{
-				int limit = height - (i-1);
+				int limit = i;
 				if(j<=limit)
 					System.out.print("#");
 			}
