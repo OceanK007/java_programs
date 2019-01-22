@@ -2,9 +2,10 @@ public class Test
 {
 	public static void main(String[] args) 
 	{  
-		System.out.println(Math.sqrt(2));	// 1.4142135623730951
-		System.out.println(Math.sqrt(4));	// 2.0
-		System.out.println(Math.sqrt(6));	// 2.449489742783178
+		System.out.println(5/2);	// 2
+		System.out.println(5.0/2);	// 2.5
+		System.out.println(5/2f);	// 2.5
+		System.out.println(5/2.0);	// 2.5
+		System.out.println(5/2d);	// 2.5
 	}
-
 }

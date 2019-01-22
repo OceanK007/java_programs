@@ -12,6 +12,10 @@ Simple java project to implement basic and advance level programs
 * java.util.Arrays
 	- Arrays.toString(int[] a); 
 	- List<String> stooges = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert arry to list
+	- Arrays.equals(array1, array2) // To check if two arrays are equal or not
+
+* ASCII Values:
+	- Ascii code of 0 = 48, 1 = 49, 2=50 .. 9 = 57
 
 * java.lang.Math
 	  - Math.abs()
