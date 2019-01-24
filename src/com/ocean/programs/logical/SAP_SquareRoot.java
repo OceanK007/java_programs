@@ -1,5 +1,8 @@
 package com.ocean.programs.logical;
 
+/**
+Newton's Iteration:  X(n+1) = (X(n) + number/X(n))/2
+ */
 public class SAP_SquareRoot 
 {
 	public static void main(String[] args) 
@@ -18,8 +21,22 @@ public class SAP_SquareRoot
 	    System.out.println( "All tests passed");
 	}
 	
-	public static double squareRoot( double x )
+	public static double squareRoot( double number )
 	{
-	    return Math.sqrt(x);
+		double t;
+		 
+		double squareRoot = number / 2;
+		System.out.println("squareRoot: "+squareRoot);
+	 
+		do 
+		{
+			t = squareRoot;
+			squareRoot = (t + (number / t)) / 2;
+			System.out.println("sqrt: "+squareRoot);
+		} 
+		while ((t - squareRoot) != 0);
+	 
+		System.out.println(squareRoot);
+		return squareRoot;
 	}
 }

@@ -1,9 +1,9 @@
 package com.ocean.programs.collection;
 
 /*
- * public static int FindMin(int a[])
- * Returns the smallest number in array that has been rotated
- * For example - Array {3,4,5,6,1,2} returns 1
+ * public static int secondSmallest(int a[])
+ * Returns the 2nd smallest number in array that has been rotated
+ * For example - Array {3,4,5,6,1,2} returns 2
 */
 
 public class SAP_SecondSmallestElementInArray
@@ -55,7 +55,7 @@ public class SAP_SecondSmallestElementInArray
 	                second = first; 
 	                first = x[i]; 
 	            } 	 
-	            else if (x[i] < second && x[i] != first) 
+	            else if (x[i] < second && x[i] > first) 
 	            {
 	                second = x[i];
 	            }
