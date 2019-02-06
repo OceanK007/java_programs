@@ -1,19 +1,15 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
 class Test 
 { 
-	public static void main(String[] args) {
-		System.out.println(sqrt(2));
+	public static void main(String[] args) throws IOException 
+	{
+		System.out.println(115 % 16);
 	}
 	
-	public static double sqrt(int number) {
-		double t;
-	 
-		double squareRoot = number / 2;
-	 
-		do {
-			t = squareRoot;
-			squareRoot = (t + (number / t)) / 2;
-		} while ((t - squareRoot) != 0);
-	 
-		return squareRoot;
-	}
-} 
+}

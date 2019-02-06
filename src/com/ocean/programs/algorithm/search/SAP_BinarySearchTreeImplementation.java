@@ -28,10 +28,10 @@ public class SAP_BinarySearchTreeImplementation
 	    		&& searchTree.contains(5)
 	    		&& !searchTree.contains(6)){
 	    	System.out.println("Pass");
-    }
-    else 
-    {
-    	System.out.println("Fail");
+	    }
+	    else 
+	    {
+	    	System.out.println("Fail");
 	    }		
    	}
 

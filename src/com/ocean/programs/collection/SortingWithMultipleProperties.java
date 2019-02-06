@@ -1,10 +1,10 @@
 package com.ocean.programs.collection;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
+/**
+	Sort Student by id > firstname > middlename > lastname > rollNo
+**/
 public class SortingWithMultipleProperties 
 {
 	public static void main(String[] args) 
@@ -48,37 +48,7 @@ public class SortingWithMultipleProperties
 		list.add(new Student(1, "Ocean4", "", "", ""));
 		list.add(new Student(1, "Ocean4", "", "", ""));
 		
-		Collections.sort(list, new Comparator<Student>() 
-		{
-			@Override
-			public int compare(Student student1, Student student2) 
-			{
-				int c;
-				c = Integer.valueOf(student1.id).compareTo(Integer.valueOf(student2.id));
-				
-				if(c == 0)
-				{
-					c = student1.firstName.compareTo(student2.firstName);
-				}
-				
-				if(c == 0)
-				{
-					c = student1.middleName.compareTo(student2.middleName);
-				}
-				
-				if(c == 0)
-				{
-					c = student1.lastName.compareTo(student2.lastName);
-				}
-				
-				if(c == 0)
-				{
-					c = student1.rollNo.compareTo(student2.rollNo);
-				}
-				
-				return c;
-			}
-		});
+		Collections.sort(list);
 		
 		for(Student student : list)
 		{
@@ -87,7 +57,7 @@ public class SortingWithMultipleProperties
 	}
 }
 
-class Student
+class Student implements Comparable<Student>
 {
 	int id;
 	String firstName;
@@ -108,5 +78,34 @@ class Student
 	public String toString() 
 	{
 		return "Student [id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", rollNo=" + rollNo + "]";
+	}
+
+	@Override
+	public int compareTo(Student student2) 
+	{
+		int c;
+		c = Integer.valueOf(id).compareTo(Integer.valueOf(student2.id));
+		
+		if(c == 0)
+		{
+			c = firstName.compareTo(student2.firstName);
+		}
+		
+		if(c == 0)
+		{
+			c = middleName.compareTo(student2.middleName);
+		}
+		
+		if(c == 0)
+		{
+			c = lastName.compareTo(student2.lastName);
+		}
+		
+		if(c == 0)
+		{
+			c = rollNo.compareTo(student2.rollNo);
+		}
+		
+		return c;
 	}
 }

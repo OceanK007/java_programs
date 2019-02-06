@@ -25,9 +25,9 @@ final public class SingletonPatternLazyInitializationThreadSafe implements Seria
 	protected Object clone() throws CloneNotSupportedException 
 	{
 		// Throwing error so you can't create new instance by cloning
-		throw new CloneNotSupportedException();
+		//throw new CloneNotSupportedException();
 		// And if you don't want to throw exception then just return same instance
-		// return instance;
+		 return instance;
 	}
 
 	// readResolve is used for replacing the object read from the stream. 
@@ -68,5 +68,11 @@ final public class SingletonPatternLazyInitializationThreadSafe implements Seria
 			}
 		}
 		return instance;
+	}
+	
+	public static void main(String[] args) throws CloneNotSupportedException 
+	{
+		SingletonPatternLazyInitializationThreadSafe singleton = SingletonPatternLazyInitializationThreadSafe.getInstance();
+		System.out.println(singleton);
 	}
 }
