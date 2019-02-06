@@ -18,7 +18,7 @@ Simple java project to implement basic and advance level programs
 	- Ascii code of 0 = 48, 1 = 49, 2=50 .. 9 = 57
 
 * java.lang.Math
-	  - Math.abs()
+    - Math.abs()	
 	
 		  // abs() method taking float type as input 
         System.out.println(Math.abs(123.0f)); 				// 123.0
