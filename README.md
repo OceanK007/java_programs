@@ -8,6 +8,18 @@ Simple java project to implement basic and advance level programs
 	- indexOf(String x);
 	- toCharArray();
 	- length();
+	- join();
+		* Example1:
+			String message = String.join("-", "Java", "is", "cool");
+     		// message returned is: "Java-is-cool"
+		* Example2:
+			String s = String.join(System.lineSeparator(), new String[] {"Hi", "Hello", "Bye"});
+			// System.lineSeparator: On UNIX systems, it returns "\n"; on MicrosoftWindows systems it returns "\r\n".
+			// Output: 
+			// Hi
+			// Hello
+			// Bye
+	-
 
 * java.util.Arrays
 	- Arrays.toString(int[] a); 

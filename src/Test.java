@@ -1,16 +1,61 @@
-import java.util.Scanner;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class Test
 {	
 	public static void main(String[] args) 
 	{
-		Scanner scanner = new Scanner(System.in);
-		int count = scanner.nextInt();
-		while(count-- > 0)
-		{
-			//System.out.println(count);
-			char c = scanner.next().charAt(0);
-			System.out.println(c);
-		}
+		Product apple = new Product("Apple", Color.GREEN, Size.SMALL);
+		Product tree = new Product("Tree", Color.GREEN, Size.LARGE);
+		Product house = new Product("House", Color.BLUE, Size.LARGE);
+		
+		List<Product> products = List.of(apple, tree, house);
+		
+		ProductFilter pf = new ProductFilter();
+		System.out.println("Green products: ");
+		pf.filterByColor(products, Color.GREEN).forEach(p -> System.out.println(" - "+p.name +" is green"));
+	}
+}
+
+enum Color
+{
+	RED, GREEN, BLUE
+}
+
+enum Size
+{
+	SMALL, MEDIUM, LARGE, HUGE
+}
+
+class Product
+{
+	public String name;
+	public Color color;
+	public Size size;
+	
+	public Product(String name, Color color, Size size) 
+	{
+		this.name = name;
+		this.color = color;
+		this.size = size;
+	}
+}
+
+// Now if you have to make one more filter for newly added property then have to change it
+class ProductFilter
+{
+	public Stream<Product> filterByColor(List<Product> products, Color color)
+	{
+		return products.stream().filter(p -> p.color == color);
+	}
+	
+	public Stream<Product> filterBySize(List<Product> products, Size size)
+	{
+		return products.stream().filter(p -> p.size == size);
+	}
+	
+	public Stream<Product> filterBySizeAndColor(List<Product> products, Size size, Color color)
+	{
+		return products.stream().filter(p -> p.size == size && p.color == color);
 	}
 }
