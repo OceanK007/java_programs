@@ -19,7 +19,9 @@ Simple java project to implement basic and advance level programs
 			// Hi
 			// Hello
 			// Bye
-	-
+	- format()
+		* 
+	- 
 
 * java.util.Arrays
 	- Arrays.toString(int[] a); 
