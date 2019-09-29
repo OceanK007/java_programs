@@ -64,22 +64,21 @@ class Circle implements Shape
 
 class ShapeMaker 
 {
-	private Shape circle = new Circle();
-	private Shape rectangle = new Rectangle();
-	private Shape square = new Square();
-
 	public void drawCircle()
 	{
+		Shape circle = new Circle();
 	    circle.draw();
 	}
 	
 	public void drawRectangle()
 	{
+		Shape rectangle = new Rectangle();
 	    rectangle.draw();
 	}
 	
 	public void drawSquare()
 	{
+		Shape square = new Square();
 	    square.draw();
 	}
 }
