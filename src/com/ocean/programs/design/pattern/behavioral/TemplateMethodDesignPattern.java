@@ -1,13 +1,13 @@
 package com.ocean.programs.design.pattern.behavioral;
 
 /**
-	It's used to define a template as skeleton and leaves the details to be implemented by child classes.
+	It's used to define a template as skeleton/blueprint and leaves the details to be implemented by child classes.
 	This pattern is used when you have a common behavior and you implement it in parent class and made it final so child classes can't override it.
 	But you keep the dynamic behavior to be implemented by child classes.
 	
 	It helps to avoid code duplication.
 **/
-public class TemplateDesignPattern 
+public class TemplateMethodDesignPattern 
 {
 	public static void main(String[] args) 
 	{

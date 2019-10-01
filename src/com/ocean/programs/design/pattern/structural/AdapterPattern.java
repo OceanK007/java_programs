@@ -28,11 +28,12 @@ public class AdapterPattern
 		SocketAdapter12Object socketAdapter12Object = new SocketAdapter12Object();
 		System.out.println("Socket Adapter Producing Volt: "+socketAdapter12Object.get120Volt());
 		
-		SocketAdapter12Class socketAdapter12Class = new SocketAdapter12Class();
-		System.out.println("Socket Adapter Producing Volt: "+socketAdapter12Class.get120Volt());
+		//SocketAdapter12Class socketAdapter12Class = new SocketAdapter12Class();
+		//System.out.println("Socket Adapter Producing Volt: "+socketAdapter12Class.get120Volt());
 	}
 }
 
+/** 120V **/
 interface Socket120 
 {
 	int get120Volt();
@@ -47,6 +48,7 @@ class Socket120Impl implements Socket120
 	}
 }
 
+/** 12V **/
 interface Socket12
 {
 	int get12Volt();
@@ -61,8 +63,11 @@ class Socket12Impl implements Socket12
 	}
 }
 
+/** 12V Adapter **/
 class SocketAdapter12Object implements Socket120
 {
+	// we need reference to the object we are adapting
+	// Either directly instantiate an object of pass by using constructor
 	Socket12 socket12 = new Socket12Impl();
 
 	@Override
@@ -72,12 +77,9 @@ class SocketAdapter12Object implements Socket120
 	}
 }
 
-class SocketAdapter12Class extends Socket12Impl implements Socket120
-{
-	@Override
-	public int get120Volt() 
-	{
-		return get12Volt();
-	}
-}
+/*
+ * class SocketAdapter12Class extends Socket12Impl implements Socket120 {
+ * 
+ * @Override public int get120Volt() { return get12Volt(); } }
+ */
 
