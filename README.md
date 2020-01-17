@@ -24,8 +24,8 @@ Simple java project to implement basic and advance level programs
 	- 
 
 * java.util.Arrays
-	- Arrays.toString(int[] a); 
-	- List<String> stooges = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert arry to list
+	- Arrays.toString(int[] a); // To print array
+	- List<String> stooges = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert array to list
 	- Arrays.equals(array1, array2) // To check if two arrays are equal or not
 
 * Collection methods:
@@ -65,7 +65,7 @@ Simple java project to implement basic and advance level programs
 			
 	 - Math.random()
 	 		
-	 		// a pseudorandom double greater than or equalto 0.0 and less than 1.0.
+	 		// a pseudo random double greater than or equal to 0.0 and less than 1.0
 			System.out.println(Math.random());						// 0.7525898657380261
 			System.out.println(Math.random());						// 0.6916553867342917
 			System.out.println(Math.random()*10);					// 1.83082622844851
@@ -111,3 +111,12 @@ Simple java project to implement basic and advance level programs
 	 		System.out.println(Math.sqrt(2));	// 1.4142135623730951
 			System.out.println(Math.sqrt(4));	// 2.0
 			System.out.println(Math.sqrt(6));	// 2.449489742783178
+
+* Searching in array:
+	- First approach (LinearSearch): You can search by using linear search, where you can iterate over the array and find the element.
+	- Second approach (BinarySearch): You can sort the whole array first then find the middle of array and compare the element with middle element. If middle element is greater than element then you need to search in first half of array.
+	
+* Sorting in array:
+	- First approach (BubbleSort): Take the first element and compare it with the next element and if next element is smaller, then replace it with it. Keep doing it until it's sorted.
+	- Second approach (InsertionSort): Keep first element as it is and iterate the loop from index 1 we will create sub-arrays (by taking one element on each iteration) and sort the sub-arrays.
+	- Third approach (SelectionSort): Select the smallest element from array and put it at leftmost part of unsorted array. Keep doing it until whole array is sorted.

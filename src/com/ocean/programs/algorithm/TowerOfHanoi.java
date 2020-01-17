@@ -1,7 +1,11 @@
 package com.ocean.programs.algorithm;
 
 /**
-Towers of Hanoi. recursive solution to towers of Hanoi In the towers of Hanoi problem, we have three poles and n discs that fit onto the poles. The discs differ in size and are initially stacked on one of the poles, in order from largest (disc n) at the bottom to smallest (disc 1) at the top. The task is to move all n discs to another pole, while obeying the following rules:
+Towers of Hanoi. recursive solution to towers of Hanoi In the towers of Hanoi problem, 
+we have three poles and n discs that fit onto the poles. 
+The discs differ in size and are initially stacked on one of the poles, 
+in order from largest (disc n) at the bottom to smallest (disc 1) at the top. 
+The task is to move all n discs to another pole, while obeying the following rules:
 Move only one disc at a time.
 Never place a larger disc on a smaller one.
 **/
