@@ -21,7 +21,7 @@ public class QuickSort
             /* pi is partitioning index, arr[pi] is now at right place */
             int partitionIndex = partition(arr, startIndex, endIndex);
  
-            // Recursively sort elements before partition and after partition
+            // Recursively sort elements before partitionIndex and after partitionIndex
             sortElements(arr, startIndex, partitionIndex-1);
             sortElements(arr, partitionIndex+1, endIndex);
         }
@@ -33,7 +33,7 @@ public class QuickSort
         int newPivotIndex = (startIndex-1); // index of smaller element
         for (int j=startIndex; j<endIndex; j++)
         {
-        	System.out.println("arr[j]: "+arr[j]+" | pivot: "+pivot);
+        	System.out.println("j: "+j+" | arr[j]: "+arr[j]+" | newPivotIndex: "+newPivotIndex+" | endIndex: "+endIndex+" | arr[endIndex] (pivot): "+pivot);
             // If current element is smaller than or equal to pivot
             if (arr[j] <= pivot)
             {
