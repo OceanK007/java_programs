@@ -1,6 +1,9 @@
 # java_programs
 Simple java project to implement basic and advance level programs
 
+# Levels
+Easy, Medium, Hard
+
 # Methods used:
 
 * String methods:
@@ -112,11 +115,19 @@ Simple java project to implement basic and advance level programs
 			System.out.println(Math.sqrt(4));	// 2.0
 			System.out.println(Math.sqrt(6));	// 2.449489742783178
 
+* Java 8 
+	- Finding max from list of Integers
+		Integer maxNumber1 = a.stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
+	- 
+
 * Searching in array:
 	- First approach (LinearSearch): You can search by using linear search, where you can iterate over the array and find the element.
 	- Second approach (BinarySearch): You can sort the whole array first then find the middle of array and compare the element with middle element. If middle element is greater than element then you need to search in first half of array.
 	
 * Sorting in array:
 	- First approach (BubbleSort): Take the first element and compare it with the next element and if next element is smaller, then replace it with it. Keep doing it until it's sorted.
-	- Second approach (InsertionSort): Keep first element as it is and iterate the loop from index 1 we will create sub-arrays (by taking one element on each iteration) and sort the sub-arrays.
+	- Second approach (InsertionSort): Keep first element as it is and iterate the loop from index 1 and create sub-arrays (by taking one element on each iteration) and sort the sub-arrays individually.
 	- Third approach (SelectionSort): Select the smallest element from array and put it at leftmost part of unsorted array. Keep doing it until whole array is sorted.
+	- Fourth approach (QuickSort): Find the pivot (left-most, right-most, middle element. Right-most is implemented). Compare each element with pivot element and sort them. Keep doing it until all elements are sorted. Recursion will be required for quicksort.
+	
+	 

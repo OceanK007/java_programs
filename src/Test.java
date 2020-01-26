@@ -1,14 +1,11 @@
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Stream;
 
 class Result {
 
@@ -24,27 +21,29 @@ class Result {
     public static int getTotalX(List<Integer> a, List<Integer> b) 
     {   
         int maxValue = Integer.MIN_VALUE;
-        Integer maxNumber1 = Stream.of(a).max(Comparator.comparing(Integer::parseInt)).get();
-        Integer maxNumber2 = Stream.of(b).max(Comparator.comparing(Integer::parseInt)).get();
+        Integer maxNumber1 = a.stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
+        Integer maxNumber2 = b.stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
 
         if(maxNumber1 > maxNumber2)
             maxValue = maxNumber1;
         else
             maxValue = maxNumber2;
 
+        System.out.println("maxValue: "+maxValue);
+        
         int count = 0;
         for(int i=1;i<=maxValue;i++)
         {
             boolean valid = false;
             for(int j=0;j<a.size();j++)
             {
-                if(i%a[j] == 0)
+                if(i%a.get(j) == 0)
                     valid = true;
                 else
                     valid = false;
                 
                 if(valid == false)
-                    continue;
+                    break;
             }
 
             if(!valid)
@@ -52,20 +51,23 @@ class Result {
 
             for(int k=0;k<b.size();k++)
             {
-                if(b[k]%i == 0)
+                if(b.get(k)%i == 0)
                     valid = true;
                 else
                     valid = false;
                 
                 if(valid == false)
-                    continue;
+                    break;
             }
 
             if(!valid)
                 continue;
 
             if(valid)
-                count += 1;
+            {
+            	System.out.println("i: "+i);
+            	count += 1;
+            }
         }
 
         return count;
@@ -77,7 +79,7 @@ public class Test
     public static void main(String[] args) throws IOException 
     {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
 
@@ -95,10 +97,10 @@ public class Test
 
         int total = Result.getTotalX(arr, brr);
 
-        bufferedWriter.write(String.valueOf(total));
-        bufferedWriter.newLine();
+        //bufferedWriter.write(String.valueOf(total));
+        //bufferedWriter.newLine();
 
         bufferedReader.close();
-        bufferedWriter.close();
+        //bufferedWriter.close();
     }
 }
