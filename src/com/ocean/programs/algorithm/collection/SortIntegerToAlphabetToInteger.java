@@ -1,4 +1,4 @@
-package com.ocean.programs.collection;
+package com.ocean.programs.algorithm.collection;
 
 /**
  	There is an integer array with elements range from 0 to 9, like:

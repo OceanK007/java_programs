@@ -1,4 +1,4 @@
-package com.ocean.programs.collection;
+package com.ocean.programs.algorithm.collection;
 
 /**
 An array of numbers, [1,5,3,8]

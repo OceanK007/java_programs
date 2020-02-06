@@ -1,4 +1,4 @@
-package com.ocean.programs.collection;
+package com.ocean.programs.algorithm.collection;
 
 /**
 You have given an array of dates : ["2-3-1989", "04-02-1990", "01-07-1950", "26-05-2018"]

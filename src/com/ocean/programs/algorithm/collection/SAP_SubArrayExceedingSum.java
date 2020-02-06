@@ -1,4 +1,4 @@
-package com.ocean.programs.collection;
+package com.ocean.programs.algorithm.collection;
 
 public class SAP_SubArrayExceedingSum 
 {

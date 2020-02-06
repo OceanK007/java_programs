@@ -1,4 +1,4 @@
-package com.ocean.programs.collection;
+package com.ocean.programs.algorithm.collection;
 
 /**Find the minimum number from an unsorted stack. Write code to pop in, pop out numbers from stack.
 Stack – {99, 34, 1, 5, 0, 2}
