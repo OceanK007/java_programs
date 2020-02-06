@@ -1,4 +1,4 @@
-package com.ocean.programs.matrix;
+package com.ocean.programs.algorithm.matrix;
 
 import java.io.IOException;
 import java.util.Scanner;
