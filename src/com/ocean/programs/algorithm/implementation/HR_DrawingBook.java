@@ -3,6 +3,8 @@ package com.ocean.programs.algorithm.implementation;
 import java.io.IOException;
 import java.util.Scanner;
 
+/** Medium **/
+
 /**
 Brie’s Drawing teacher asks her class to open their books to a page number. 
 Brie can either start turning pages from the front of the book or from the back of the book. 
