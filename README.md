@@ -30,6 +30,7 @@ Easy, Medium, Hard, Advance, Expert
 	- Arrays.toString(int[] a); // To print array
 	- List<String> stooges = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert array to list
 	- Arrays.equals(array1, array2) // To check if two arrays are equal or not
+	- Arrays.copyOf(arr, lenghtToReturnAfterCopy)	// To copy an array and return the array with defined length
 
 * Collection methods:
 	-  
