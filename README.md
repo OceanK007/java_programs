@@ -24,19 +24,25 @@ Easy, Medium, Hard, Advance, Expert
 			// Bye
 	- format()
 		* 
-	- 
+
+* StringBuilder methods:
+	- sb.reverse();	// To reverse the string
 
 * java.util.Arrays
 	- Arrays.toString(int[] a); // To print array
 	- List<String> stooges = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert array to list
 	- Arrays.equals(array1, array2) // To check if two arrays are equal or not
 	- Arrays.copyOf(arr, lenghtToReturnAfterCopy)	// To copy an array and return the array with defined length
+	- Arrays.sort(arr)	// To sort array in ascending order
+	- 
 
 * Collection methods:
 	-  
 	
 * ASCII Values:
 	- Ascii code of 0 = 48, 1 = 49, 2=50 .. 9 = 57
+	- Print ASCII value of a char: System.out.println((int) '0');  // 48
+	- Print char value of ASCII value: System.out.println((char) 48);	 // 0
 
 * java.lang.Math
     - Math.abs()	
