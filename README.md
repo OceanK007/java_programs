@@ -131,4 +131,6 @@ Easy, Medium, Hard, Advance, Expert
 	- Third approach (SelectionSort): Select the smallest element from array and put it at leftmost part of unsorted array. Keep doing it until whole array is sorted.
 	- Fourth approach (QuickSort): Find the pivot (left-most, right-most, middle element. Right-most is implemented). Compare each element with pivot element and sort them. Keep doing it until all elements are sorted. Recursion will be required for quicksort.
 	
-	 
+* Programs which needs to be reviewed:
+	- HR_FormingMagicSquare.java
+	- HR_ClimbingTheLeaderboard.java	 

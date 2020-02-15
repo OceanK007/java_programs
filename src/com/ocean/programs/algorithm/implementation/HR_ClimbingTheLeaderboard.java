@@ -117,7 +117,7 @@ public class HR_ClimbingTheLeaderboard
         return ranks; 
     }
     
-    // Third approach : Using binary search (best approach)
+    // Third approach : Using binary search (best approach) - Incomplete
     static int[] climbingLeaderboard3(int[] scores, int[] alice) 
     {
     	int[] ranks = new int[alice.length];
