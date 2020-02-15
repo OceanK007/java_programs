@@ -28,6 +28,12 @@ Easy, Medium, Hard, Advance, Expert
 * StringBuilder methods:
 	- sb.reverse();	// To reverse the string
 
+* Modulus:
+	- 4%2 = 0
+	- 5%2 = 1
+	- 2%5 = 2
+	- 2%4 = 2
+
 * java.util.Arrays
 	- Arrays.toString(int[] a); // To print array
 	- List<String> stooges = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert array to list
