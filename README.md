@@ -38,13 +38,24 @@ Easy, Medium, Hard, Advance, Expert
 	- Arrays.toString(int[] a); // To print array
 	- List<String> stooges = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert array to list
 	- Arrays.equals(array1, array2) // To check if two arrays are equal or not
-	- Arrays.copyOf(arr, lenghtToReturnAfterCopy)	// To copy an array and return the array with defined length
+	- Arrays.copyOf(arr, lenghtToReturnAfterCopy)	// To copy an array and return the array with defined length // Why we should copy array? You should not directly assign one array to another array variable, if you change first array element, it will reflect in second array.
 	- Arrays.sort(arr)	// To sort array in ascending order
 	- 
 
 * Collection methods:
 	-  
 	
+* BigInteger:
+	- BigInteger is immutable
+	- BigInteger Multiply
+		BigInteger bi = BigInteger.valueOf(2);
+		bi = bi.multiply(BigInteger.valueOf(3));		
+		System.out.println(bi); // 6
+	- BigInteger Add
+		BigInteger bi2 = BigInteger.valueOf(2);
+		bi2 = bi2.add(BigInteger.valueOf(3));
+		System.out.println(bi2); // 5
+
 * ASCII Values:
 	- Ascii code of 0 = 48, 1 = 49, 2=50 .. 9 = 57
 	- Print ASCII value of a char: System.out.println((int) '0');  // 48
