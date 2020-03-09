@@ -11,6 +11,9 @@ Easy, Medium, Hard, Advance, Expert
 	- indexOf(String x);
 	- toCharArray();
 	- length();
+	- replace();
+	- replaceAll();
+	- replaceFirst();
 	- join();
 		* Example1:
 			String message = String.join("-", "Java", "is", "cool");
