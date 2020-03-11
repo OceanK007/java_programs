@@ -29,6 +29,7 @@ public class AnagramStrings
 	
 	public static boolean checkAnagrams(String s1, String s2)
 	{
+		// Approach2: Convert into two charArrys then sort it using Arrays.sort() and then create strings and compare
 		boolean isAnagram = true;
 		
 		if(s1.length() != s2.length())
@@ -50,5 +51,5 @@ public class AnagramStrings
 		}
 		
 		return isAnagram;
-	}
+	} 
 }
