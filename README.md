@@ -39,9 +39,11 @@ Easy, Medium, Hard, Advance, Expert
 
 * java.util.Arrays
 	- Arrays.toString(int[] a); // To print array
-	- List<String> stooges = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert array to list
+	- List<String> stores = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert array to list (you can pass an array of Strings as well)
+	- String[] sArray = listOfString.toArray(new String[0]);	// Convert list to array (passing an array of size 0 as parameter)
 	- Arrays.equals(array1, array2) // To check if two arrays are equal or not
 	- Arrays.copyOf(arr, lenghtToReturnAfterCopy)	// To copy an array and return the array with defined length // Why we should copy array? You should not directly assign one array to another array variable, if you change first array element, it will reflect in second array.
+	- Arrays.copyOfRange(arr, startIndex, endIndex) // Copying an array of within provided ranges
 	- Arrays.sort(arr)	// To sort array in ascending order
 	- 
 
@@ -148,14 +150,22 @@ Easy, Medium, Hard, Advance, Expert
 	- 
 
 * Searching in array:
-	- First approach (LinearSearch): You can search by using linear search, where you can iterate over the array and find the element.
-	- Second approach (BinarySearch): You can sort the whole array first then find the middle of array and compare the element with middle element. If middle element is greater than element then you need to search in first half of array.
+	- LinearSearch:
+		* You can search by using linear search, where you can iterate over the array and find the element.
+	- BinarySearch: 
+		* You can sort the whole array first then find the middle of array and compare the element with middle element. If middle element is greater than element then you need to search in first half of array.
 	
 * Sorting in array:
-	- First approach (BubbleSort): Take the first element and compare it with the next element and if next element is smaller, then replace it with it. Keep doing it until it's sorted.
-	- Second approach (InsertionSort): Keep first element as it is and iterate the loop from index 1 and create sub-arrays (by taking one element on each iteration) and sort the sub-arrays individually.
-	- Third approach (SelectionSort): Select the smallest element from array and put it at leftmost part of unsorted array. Keep doing it until whole array is sorted.
-	- Fourth approach (QuickSort): Find the pivot (left-most, right-most, middle element. Right-most is implemented). Compare each element with pivot element and sort them. Keep doing it until all elements are sorted. Recursion will be required for quicksort.
+	- BubbleSort: 
+		* It compares the first two elements, if the first is greater than the second, swaps them, continues doing (compares and swaps) for the next pair of adjacent elements. It then starts again with the first two elements, compares, swaps until no more swaps are required.
+	- InsertionSort: 
+		* Insertion sort works in the similar way as we sort cards in our hand in a card game.
+		* We assume that the first card is already sorted then, we select an unsorted card. If the unsorted card is greater than the card in hand, it is placed on the right otherwise, to the left. In the same way, other unsorted cards are taken and put at their right place.
+		* Insertion sort is a sorting algorithm that places an unsorted element at its suitable place in each iteration.
+	- SelectionSort: 
+		* Select the smallest element from array and put it at leftmost part of unsorted array. Keep doing it until whole array is sorted.
+	- QuickSort: 
+		* Find the pivot (left-most, right-most, middle element. Right-most is implemented). Compare each element with pivot element and sort them. Keep doing it until all elements are sorted. Recursion will be required for quicksort.
 	
 * Programs which needs to be reviewed:
 	- HR_FormingMagicSquare.java
