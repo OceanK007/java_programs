@@ -151,7 +151,7 @@
 	
 * Sorting in array:
 	- BubbleSort: 
-		* It compares the first two elements, if the first is greater than the second, swaps them, continues doing (compares and swaps) for the next pair of adjacent elements. It then starts again with the first two elements, compares, swaps until no more swaps are required.
+		* It compares the first two elements, if the first is greater than the second, swaps them, keep doing (compares and swaps) for the next pair of adjacent elements. After complete whole loop, it starts again with the first two elements, compares, swaps until no more swaps are required.
 	- InsertionSort: 
 		* Insertion sort works in the similar way as we sort cards in our hand in a card game.
 		* We assume that the first card is already sorted then, we select an unsorted card. If the unsorted card is greater than the card in hand, it is placed on the right otherwise, to the left. In the same way, other unsorted cards are taken and put at their right place.
