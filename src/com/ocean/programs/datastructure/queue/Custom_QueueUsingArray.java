@@ -1,5 +1,6 @@
 package com.ocean.programs.datastructure.queue;
 
+// This is basically a DEQUE (Doubly ended queue) or Circular queue
 class QueueArray
 {
 	int MAX = 5;
@@ -8,7 +9,7 @@ class QueueArray
 	int head = -1;
 	int tail = -1;
 	
-	// Initially the head and tail both will be at same location i.e. index 0
+	// Initially the head and tail both will be at same location i.e. index -1
 	public void enqueue(int data)
 	{
 		if(!isFull())
