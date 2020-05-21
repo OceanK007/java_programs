@@ -1,6 +1,4 @@
-# Methods used:
-
-* String methods:
+# String methods:
 	- charAt(int index);
 	- indexOf(String x);
 	- toCharArray();
@@ -22,18 +20,19 @@
 	- format()
 		* 
 
-* StringBuilder methods:
+# StringBuilder methods:
 	- sb.reverse();	// To reverse the string
 
-* Modulus:
+# Modulus:
 	- 4%2 = 0
 	- 5%2 = 1
 	- 2%5 = 2
 	- 2%4 = 2
 
-* java.util.Arrays
+# java.util.Arrays
 	- Arrays.toString(int[] a); // To print array
 	- List<String> stores = Arrays.asList("Larry", "Moe", "Curly"); // Use it to convert array to list (you can pass an array of Strings as well)
+	- List<Integer> numbers = Arrays.asList(1,2,3,4,5);	
 	- String[] sArray = listOfString.toArray(new String[0]);	// Convert list to array (passing an array of size 0 as parameter)
 	- Arrays.equals(array1, array2) // To check if two arrays are equal or not
 	- Arrays.copyOf(arr, lenghtToReturnAfterCopy)	// To copy an array and return the array with defined length // Why we should copy array? You should not directly assign one array to another array variable, if you change first array element, it will reflect in second array.
@@ -41,10 +40,10 @@
 	- Arrays.sort(arr)	// To sort array in ascending order
 	- 
 
-* Collection methods:
+# Collection methods:
 	-  
 	
-* BigInteger:
+# BigInteger:
 	- BigInteger is immutable
 	- BigInteger Multiply
 		BigInteger bi = BigInteger.valueOf(2);
@@ -55,12 +54,12 @@
 		bi2 = bi2.add(BigInteger.valueOf(3));
 		System.out.println(bi2); // 5
 
-* ASCII Values:
+# ASCII Values:
 	- Ascii code of 0 = 48, 1 = 49, 2=50 .. 9 = 57
 	- Print ASCII value of a char: System.out.println((int) '0');  // 48
 	- Print char value of ASCII value: System.out.println((char) 48);	 // 0
 
-* java.lang.Math
+# java.lang.Math
     - Math.abs()	
 	
 		  // abs() method taking float type as input 
@@ -138,18 +137,18 @@
 			System.out.println(Math.sqrt(4));	// 2.0
 			System.out.println(Math.sqrt(6));	// 2.449489742783178
 
-* Java 8 
-	- Finding max from list of Integers
-		Integer maxNumber1 = a.stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
+# Java 8 
+	- Finding max from list of Integers:
+			Integer maxNumber1 = a.stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
 	- 
 
-* Searching in array:
+# Searching in array:
 	- LinearSearch:
 		* You can search by using linear search, where you can iterate over the array and find the element.
 	- BinarySearch: 
 		* You can sort the whole array first then find the middle of array and compare the element with middle element. If middle element is greater than element then you need to search in first half of array.
 	
-* Sorting in array:
+# Sorting in array:
 	- BubbleSort: 
 		* It compares the first two elements, if the first is greater than the second, swaps them, keep doing (compares and swaps) for the next pair of adjacent elements. After complete whole loop, it starts again with the first two elements, compares, swaps until no more swaps are required.
 	- InsertionSort: 
@@ -161,6 +160,6 @@
 	- QuickSort: 
 		* Find the pivot (left-most, right-most, middle element. Right-most is implemented). Compare each element with pivot element and sort them. Keep doing it until all elements are sorted. Recursion will be required for quicksort.
 	
-* Programs which needs to be reviewed:
+# Programs which needs to be reviewed:
 	- HR_FormingMagicSquare.java
 	- HR_ClimbingTheLeaderboard.java	 
