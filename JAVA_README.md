@@ -41,7 +41,19 @@
 	- 
 
 # Collection methods:
-	-  
+	-  Deque:
+		* add(Object obj)
+		* addFirst(Object obj)
+		* addLast(Object obj)
+		* remove(Object obj)
+		* removeFirst()
+		* removeLast()
+		* poll() // removes head of queue
+		* pollFirst()
+		* pollLast()
+		* peek()	// Retrieves head but don't remove
+		* peekFirst()
+		* peekLast()
 	
 # BigInteger:
 	- BigInteger is immutable
