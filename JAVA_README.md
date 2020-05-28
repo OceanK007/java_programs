@@ -41,7 +41,7 @@
 	- 
 
 # Collection methods:
-	-  Deque:
+	-  Deque<Integer> deque = new LinkedList<Integer>():
 		* add(Object obj)
 		* addFirst(Object obj)
 		* addLast(Object obj)
@@ -51,10 +51,29 @@
 		* poll() // removes head of queue
 		* pollFirst()
 		* pollLast()
-		* peek()	// Retrieves head but don't remove
+		* peek()	// Retrieves head but doesn't remove
 		* peekFirst()
 		* peekLast()
 	
+	- PriorityQueue<Integer> p = new PriorityQueue<Integer>():
+	- Queue<Integer> p = new PriorityQueue<Integer>():
+		* add(Object obj)
+		* remove()
+		* remove(Object obj)
+		* poll()	// removes head of queue
+		* peek() // Retrieves head but doesn't remove
+		
+	- Stack<Integer> stack = new Stack<Integer>():
+		* add(Object obj)
+		* addElement(Object obj)
+		* push(Object obj)
+		* remove(Object obj)
+		* remove(int index)
+		* removeElement(Object obj)
+		* removeElementAt(int index)
+		* pop()	// Removes last element of stack
+		* peek() // Retrieves last element of stack but doesn't remove
+		
 # BigInteger:
 	- BigInteger is immutable
 	- BigInteger Multiply

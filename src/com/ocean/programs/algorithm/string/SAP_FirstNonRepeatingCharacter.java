@@ -5,7 +5,7 @@ package com.ocean.programs.algorithm.string;
 * Given "apple", the answer is "a"
 * Given "racecars", the answer is "e"
 **/        
-public class SAP_FirstNonRepeatingLetter 
+public class SAP_FirstNonRepeatingCharacter 
 {
 	public static void main(String[] args) 
 	{
@@ -30,6 +30,7 @@ public class SAP_FirstNonRepeatingLetter
 		{
 			char c = input.charAt(i);
 			String subStr = input.substring(0, i)+input.substring(i+1);
+			System.out.println(subStr);
 			if(subStr.indexOf(c) == -1)
 			{
 				firstNonRepeatingChar = c;

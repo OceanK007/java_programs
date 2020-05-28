@@ -11,6 +11,7 @@ public class Custom_LRUCacheUsingQueueAndSet
 	Set<Integer> set = new HashSet<Integer>();
 	int CACHE_SIZE = 3;
 	
+	// Complexity: O(1)
 	public Integer getElement(int value)
 	{
 		if(set.contains(value))
@@ -25,6 +26,7 @@ public class Custom_LRUCacheUsingQueueAndSet
 		return null;
 	}
 	
+	// Complexity: O(1)
 	public void addElement(int value)
 	{
 		// If map contains key, remove it from queue and add it to front of queue

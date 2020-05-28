@@ -11,6 +11,7 @@ public class Custom_LRUCacheUsingQueueAndMap
 	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 	int CACHE_SIZE = 3;
 	
+	// Complexity: O(1)
 	public Integer getElement(int value)
 	{
 		if(map.containsKey(value))
@@ -25,6 +26,7 @@ public class Custom_LRUCacheUsingQueueAndMap
 		return null;
 	}
 	
+	// Complexity: O(1)
 	public void addElement(int value)
 	{
 		// If map contains key, remove it from queue and add it to front of queue
