@@ -223,6 +223,21 @@ class HR_Custom_BinaryTree
         return Math.max(leftDepth, rightDepth) + 1;
     }
     
+    // Check if a binary tree is a binary search tree or not.
+    // The data value of every node in a node's left subtree is less than the data value of that node.
+    // The data value of every node in a node's right subtree is greater than the data value of that node.
+    // To check: Inorder traversal is always in ascending order.
+    public static int minValue = Integer.MIN_VALUE; // You can use node or data 
+    public static boolean checkBST(Node root)
+    {
+    	if(root == null) return true;
+
+        if(checkBST(root.left) == false) return false;            
+        if(minValue >= root.data) return false;
+        minValue = root.data;
+        return checkBST(root.right);
+    }
+    
     
 	/*public static Node insert(Node root, int data)
 	{
@@ -254,11 +269,13 @@ class HR_Custom_BinaryTree
         
         if(data <= root.data)
         {
+        	// Here if-else condition not required
             if(root.left == null) root.left = new Node(data);
             else root.left = insert(root.left, data);
         }
         if(data > root.data)
         {
+        	// Here if-else condition not required
             if(root.right == null ) root.right = new Node(data);
             else root.right = insert(root.right, data);
         }
@@ -295,5 +312,12 @@ class HR_Custom_BinaryTree
 		}
 		scan.close();
 		preOrder(root);
+		//System.out.println(checkBST(root));	// This will always return true since insert() method always insert with BST properties
 	}	
 }
+
+/* 
+INPUT:
+6
+4 2 3 1 7 6
+*/
