@@ -47,10 +47,10 @@ public class CustomDoublyLinkedList
         {
             temp = temp.getNext();
         }
-        nodeToBeInserted.setPrev(temp);
-        nodeToBeInserted.setNext(temp.getNext());
-        temp.setNext(nodeToBeInserted);
-        nodeToBeInserted.getNext().setPrev(nodeToBeInserted) ;
+        nodeToBeInserted.setPrev(temp.getPrev());
+        nodeToBeInserted.setNext(temp);
+        temp.setPrev(nodeToBeInserted);
+        nodeToBeInserted.getPrev().setNext(nodeToBeInserted) ;
     }
 	
 	public void deleteHead()
@@ -78,16 +78,19 @@ public class CustomDoublyLinkedList
 	
 	public void traverse()
 	{
-        StringBuilder result = new StringBuilder("[");
-        Node temp = head;
-        while (temp.getNext() != null)
+        if(head != null)
         {
-            result.append(temp.getData() + ", ");
-            temp = temp.getNext();
+        	StringBuilder result = new StringBuilder("[");
+            Node temp = head;
+            while (temp.getNext() != null)
+            {
+                result.append(temp.getData() + ", ");
+                temp = temp.getNext();
+            }
+            result.append(temp.getData() + "]");
+            System.out.println(result.toString());
         }
-        result.append(temp.getData() + "]");
-        System.out.println(result.toString());
-    }	
+    }
 	
 	private class Node
 	{
@@ -144,7 +147,7 @@ public class CustomDoublyLinkedList
 		cdll2.insertTail(6);
 		cdll2.traverse();
 		
-		cdll.insertAt(3, 5);
+		cdll.insertAt(4, 5);
 		cdll.traverse();
 		
 		cdll.deleteHead();
